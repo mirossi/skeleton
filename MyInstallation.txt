@@ -1,0 +1,49 @@
+rails new skeleton
+
+in Gemfile add:
+gem 'bootstrap-sass'
+gem 'mysql2', '0.3.15'
+gem 'devise'
+
+and update this one:
+gem 'sass-rails',   '4.0.1'
+gem 'uglifier', '2.1.1'
+gem 'coffee-rails', '4.0.1'
+
+ bundle update
+bundle install
+
+
+\config\database.yml:
+
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: myDB2
+  username: root
+  password: VqfcP11
+  host: localhost
+
+production-test:
+  adapter: mysql2
+  encoding: utf8
+  database: myDB2
+  username: root
+  password: VqfcP11
+  host: localhost
+
+  
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: myDB2
+  username: root
+  password: VqfcP11
+  host: test.test
+  
+  
+  rake db:create
+  rails generate layout:install bootstrap3 --force
+  
+  
+  
