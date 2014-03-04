@@ -58,4 +58,23 @@ production:
   rails generate devise:install
   --> do the install as described
   rails generate devise user
+    rails generate migration add_username_to_user username:string
   rake db:migrate
+  rails generate devise:views
+  -->change views: app/views/devise/registration/new.html.erb
+  
+  rails generate model contact
+  rake db:migrate
+  
+  rails generate controller home
+    -->change views: app/views/home/index.html.erb
+  rails generate controller registration
+  --> change views: app/views/registration/new.html.erb
+   rake db:migrate
+   
+     config.authentication_keys = [ :username ] --> init/devise.rb
+
+  rails generate scaffold comment content:string user_id:integer
+  rake db:migrate
+  
+  
