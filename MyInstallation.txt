@@ -49,6 +49,7 @@ production:
   host: test.test
   
   
+  
   rake db:create
   rails generate layout:install bootstrap3 --force
   
