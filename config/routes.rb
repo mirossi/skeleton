@@ -59,6 +59,6 @@ Skeleton::Application.routes.draw do
     resources :comments
     
     root :to => "home#index"
-    get 'dashboard' => 'home#index'
+    get 'home' => 'home#index'
   
 end
