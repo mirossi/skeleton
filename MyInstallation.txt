@@ -14,8 +14,9 @@ and update this one:
 gem 'sass-rails',   '4.0.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
-
-remove  sqlite
+ group :development do
+gem 'sqlite3'
+ end 
 
  bundle update
 bundle install
@@ -54,4 +55,7 @@ production:
   rails generate layout:install bootstrap3 --force
   
   
-  
+  rails generate devise:install
+  --> do the install as described
+  rails generate devise user
+  rake db:migrate
