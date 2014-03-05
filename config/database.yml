@@ -24,7 +24,8 @@ development:
   
   
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  database: ec2-54-204-41-178.compute-1.amazonaws.com
+  username: db2lee6j7oult2
+  password: test
+  port: 5432
