@@ -1,42 +1,28 @@
-<h2>Sign up</h2>
 
+ <h2 class="form-signin-heading">Sign up</h2>
 <%= form_tag(user_registration_path,:method => 'post') %>
 <%= devise_error_messages! %>
-<table>
 
-<tr>
-<td>Username : </td>
-<td><%=text_field_tag "user[username]",@user.username %></td>
-</tr>
 
-<tr>
-<td>Email : </td>
-<td><%=email_field_tag "user[email]",@user.email %></td>
-</tr>
+<td><%=text_field_tag "user[username]",@user.username ,:class => 'form-control', "placeholder"=>"username" %></td>
 
-<tr>
-<td>Password : </td>
-<td><%=password_field_tag "user[password]",@user.password %></td>
-</tr>
+<td><%=email_field_tag "user[email]",@user.email,:class => 'form-control', "placeholder"=>"email"  %></td>
 
-<tr>
-<td>Retype password : </td>
-<td><%=password_field_tag "user[password_confirmation]",@user.password_confirmation %></td>
-</tr>
+<td><%=password_field_tag "user[password]",@user.password,:class => 'form-control', "placeholder"=>"password"  %></td>
 
-<tr>
-<td>Mobile : </td>
-<td><%=text_field_tag "contact[mobile]" ,@contact.mobile %></td>
-</tr>
+<td><%=password_field_tag "user[password_confirmation]",@user.password_confirmation ,:class => 'form-control', "placeholder"=>"password retype" %></td>
 
-<tr>
-<td>Address : </td>
-<td><%=text_area_tag "contact[address]" ,@contact.address ,:rows => 10, :cols => 25 %></td>
-</tr>
+<td><%=text_field_tag "contact[mobile]" ,@contact.mobile,:class => 'form-control', "placeholder"=>"mobile"  %></td>
 
-<tr>
-<td><%= submit_tag nil, :class => "form_submit"%></td>
-</tr>
-</table>
-<br />
-<%= render :partial => "devise/shared/links" %>
+<td><%=text_area_tag "contact[address]" ,@contact.address ,:rows => 10, :cols => 25 ,:class => 'form-control', "placeholder"=>"address" %></td>
+
+
+</br>
+<div>
+	<%=  submit_tag nil, :class => "form_submit" ,:class=>"btn btn-lg btn-primary btn-block"%>
+</div>
+</br>
+<div class="pull-right">
+	<%= render "devise/shared/links" %>
+</div>
+

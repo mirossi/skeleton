@@ -6,7 +6,10 @@
 <% else %>
 
 <h1> welcom to rails community</h1>
-<%= link_to "Sign In", new_user_session_path, :method => :get %>
-<%= link_to "Sign up", new_user_registration_path, :method => :get %>
+
+		<%= link_to "Sign In", new_user_session_path, :method => :get,  class: "btn btn-large btn-primary"  %>
+
+		<%= link_to "Sign up", new_user_registration_path, :method => :get , class: "btn btn-large btn-primary" %>
+
 
 <% end %>
