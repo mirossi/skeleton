@@ -19,9 +19,11 @@ module Skeleton
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.i18n.default_locale = :de
     config.to_prepare do
       Devise::SessionsController.layout "devise"
       Devise::SessionsController.skip_before_filter :require_login
+     # Devise::SessionsController.before_filter :already_logged_in
 
     end
   end

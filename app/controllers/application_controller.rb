@@ -22,6 +22,12 @@ class ApplicationController < ActionController::Base
       redirect_to "/users/sign_in"
     end
   end
+      
+  def already_logged_in
+    if current_user
+      redirect_to "/"
+    end
+  end
   
   
 end

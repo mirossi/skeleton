@@ -9,17 +9,12 @@
 		<title>Skeleton</title>
 
 		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag    "dashboard.css", media: "all", "data-turbolinks-track" => true %>
 		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= growlyflash_static_notices %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body style="">
-
-    $(document).ready(function() {
-  alert("I'm loaded!");
-});
-    
-    
 		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">

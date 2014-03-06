@@ -1,7 +1,7 @@
 
 $.bootstrapGrowl.defaults = $.extend on, $.bootstrapGrowl.defaults,
   # Box width (number or css-like string, etc. "auto")
-  width:       250
+  width:       300
 
   # Auto-dismiss timeout. Set it to 0 if you want to disable auto-dismiss
   delay:       4000
@@ -13,7 +13,7 @@ $.bootstrapGrowl.defaults = $.extend on, $.bootstrapGrowl.defaults,
   target:      'body'
 
   # Show close button
-  dismiss:     false
+  dismiss:     true
 
   # Default class suffix for alert boxes. 
   # Use the following mapping (Flash key => Bootstrap Alert)
@@ -25,7 +25,7 @@ $.bootstrapGrowl.defaults = $.extend on, $.bootstrapGrowl.defaults,
 
 
   # Horizontal aligning (left, right or center)
-  align:       'right'
+  align:       'center'
 
   # Margin from the closest side
   alignAmount: 20
@@ -33,4 +33,4 @@ $.bootstrapGrowl.defaults = $.extend on, $.bootstrapGrowl.defaults,
   # Offset from window bounds
   offset:      
     from:      'top'
-    amount:    60
+    amount:    0
