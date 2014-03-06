@@ -2,15 +2,16 @@
 
 <%= form_tag(user_registration_path,:method => 'post',:class => 'form-signin') do %>
  <h2 class="form-signin-heading">Sign up</h2>
-<%= devise_error_messages! %>
+
+
 <%=text_field_tag "person[firstname]",@person.firstname ,:class => 'form-control', "placeholder"=>"firstname" %>
 <%=text_field_tag "person[lastname]",@person.lastname ,:class => 'form-control', "placeholder"=>"lastname" %>
 <%=text_field_tag "contact[street]",@contact.street ,:class => 'form-control', "placeholder"=>"strasse" %>
 <%=text_field_tag "contact[zip]",@contact.zip ,:class => 'form-control', "placeholder"=>"postleitzahl" %>
-<%=text_field_tag "contact[city]",@contact.city ,:class => 'form-control', "placeholder"=>"stadt" %>
+<%=text_field_tag "contact[city]",@contact.city ,:class => 'form-control pad', "placeholder"=>"stadt" %>
 
 <%=text_field_tag "contact[mobile]" ,@contact.mobile,:class => 'form-control', "placeholder"=>"mobile"  %>
-<%=email_field_tag "user[email]",@user.email,:class => 'form-control', "placeholder"=>"email"  %>
+<%=email_field_tag "user[email]",@user.email,:class => 'form-control pad', "placeholder"=>"email"  %>
 
 <%=text_field_tag "user[username]",@user.username ,:class => 'form-control', "placeholder"=>"username" %>
 

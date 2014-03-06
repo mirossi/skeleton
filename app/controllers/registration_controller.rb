@@ -28,8 +28,10 @@ class RegistrationController < Devise::RegistrationsController
     @contact.street = params[:contact][:street]
     @contact.city = params[:contact][:city]
     @user.valid?
+    @contact.valid?
+    @person.valid?
     
-    if @user.errors.blank?
+    if @user.errors.blank? and @person.contact.blank? and @contact.person.blank?
 
       @user.save
       @contact.person = @person
@@ -39,6 +41,9 @@ class RegistrationController < Devise::RegistrationsController
       @contact.save     
       redirect_to home_path
     else
+      flash[:notice] = @user.errors.full_messages.to_sentence
+      flash[:notice] = @contact.errors.full_messages.to_sentence
+      flash[:notice] = @person.errors.full_messages.to_sentence
       render :action => "new"
     end
   end
