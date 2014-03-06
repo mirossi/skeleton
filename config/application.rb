@@ -23,6 +23,7 @@ module Skeleton
     config.to_prepare do
       Devise::SessionsController.layout "devise"
       Devise::SessionsController.skip_before_filter :require_login
+      Devise::PasswordsController.skip_before_filter :require_login
      # Devise::SessionsController.before_filter :already_logged_in
 
     end

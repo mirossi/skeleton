@@ -1,20 +1,24 @@
 
+
+<%= form_tag(user_registration_path,:method => 'post',:class => 'form-signin') do %>
  <h2 class="form-signin-heading">Sign up</h2>
-<%= form_tag(user_registration_path,:method => 'post') %>
 <%= devise_error_messages! %>
+<%=text_field_tag "person[firstname]",@person.firstname ,:class => 'form-control', "placeholder"=>"firstname" %>
+<%=text_field_tag "person[lastname]",@person.lastname ,:class => 'form-control', "placeholder"=>"lastname" %>
+<%=text_field_tag "contact[street]",@contact.street ,:class => 'form-control', "placeholder"=>"strasse" %>
+<%=text_field_tag "contact[zip]",@contact.zip ,:class => 'form-control', "placeholder"=>"postleitzahl" %>
+<%=text_field_tag "contact[city]",@contact.city ,:class => 'form-control', "placeholder"=>"stadt" %>
+
+<%=text_field_tag "contact[mobile]" ,@contact.mobile,:class => 'form-control', "placeholder"=>"mobile"  %>
+<%=email_field_tag "user[email]",@user.email,:class => 'form-control', "placeholder"=>"email"  %>
+
+<%=text_field_tag "user[username]",@user.username ,:class => 'form-control', "placeholder"=>"username" %>
 
 
-<td><%=text_field_tag "user[username]",@user.username ,:class => 'form-control', "placeholder"=>"username" %></td>
 
-<td><%=email_field_tag "user[email]",@user.email,:class => 'form-control', "placeholder"=>"email"  %></td>
+<%=password_field_tag "user[password]",@user.password,:class => 'form-control', "placeholder"=>"password"  %>
 
-<td><%=password_field_tag "user[password]",@user.password,:class => 'form-control', "placeholder"=>"password"  %></td>
-
-<td><%=password_field_tag "user[password_confirmation]",@user.password_confirmation ,:class => 'form-control', "placeholder"=>"password retype" %></td>
-
-<td><%=text_field_tag "contact[mobile]" ,@contact.mobile,:class => 'form-control', "placeholder"=>"mobile"  %></td>
-
-<td><%=text_area_tag "contact[address]" ,@contact.address ,:rows => 10, :cols => 25 ,:class => 'form-control', "placeholder"=>"address" %></td>
+<%=password_field_tag "user[password_confirmation]",@user.password_confirmation ,:class => 'form-control', "placeholder"=>"password retype" %></td>
 
 
 </br>
@@ -25,4 +29,8 @@
 <div class="pull-right">
 	<%= render "devise/shared/links" %>
 </div>
+
+
+<% end %>
+
 
