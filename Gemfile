@@ -55,3 +55,5 @@ end
 gem 'sqlite3'
    end 
 
+gem 'growlyflash'
+

@@ -21,6 +21,7 @@ module Skeleton
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.to_prepare do
       Devise::SessionsController.layout "devise"
+      Devise::SessionsController.skip_before_filter :require_login
 
     end
   end
