@@ -57,3 +57,5 @@ gem 'sqlite3'
 
 gem 'growlyflash'
 
+gem 'rails-i18n'
+
