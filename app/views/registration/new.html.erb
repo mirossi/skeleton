@@ -1,28 +1,32 @@
-<%= form_tag(user_registration_path,:method => 'post',:class => 'form-signin') do %>
+<%= form_for @person, url: user_registration_path , html: {class: "form-signin"} do |f| %>
  <h2 class="form-signin-heading">Sign up</h2>
+<ul>
+  <% @person.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+  <%=f.text_field :firstname ,:class => 'form-control', "placeholder"=>"firstname" %>
+  <%=f.text_field :lastname ,:class => 'form-control', "placeholder"=>"lastname" %>
 
 
-<%=text_field_tag "person[firstname]",@person.firstname ,:class => 'form-control', "placeholder"=>"firstname" %>
-<%=text_field_tag "person[lastname]",@person.lastname ,:class => 'form-control', "placeholder"=>"lastname" %>
-<%=text_field_tag "contact[street]",@contact.street ,:class => 'form-control', "placeholder"=>"strasse" %>
-<%=text_field_tag "contact[zip]",@contact.zip ,:class => 'form-control', "placeholder"=>"postleitzahl" %>
-<%=text_field_tag "contact[city]",@contact.city ,:class => 'form-control pad', "placeholder"=>"stadt" %>
+  
+<%= f.fields_for :user do |builder| %>
+<%=builder.email_field :email,:class => 'form-control pad', "placeholder"=>"email"  %>
+<%=builder.text_field :username ,:class => 'form-control', "placeholder"=>"username" %>
+<%=builder.password_field :password,:class => 'form-control', "placeholder"=>"password"  %>
+<%=builder.password_field :password_confirmation ,:class => 'form-control', "placeholder"=>"password retype" %></td>
+<% end %>
 
-<%=text_field_tag "contact[mobile]" ,@contact.mobile,:class => 'form-control', "placeholder"=>"mobile"  %>
-<%=email_field_tag "user[email]",@user.email,:class => 'form-control pad', "placeholder"=>"email"  %>
-
-<%=text_field_tag "user[username]",@user.username ,:class => 'form-control', "placeholder"=>"username" %>
-
-
-
-<%=password_field_tag "user[password]",@user.password,:class => 'form-control', "placeholder"=>"password"  %>
-
-<%=password_field_tag "user[password_confirmation]",@user.password_confirmation ,:class => 'form-control', "placeholder"=>"password retype" %></td>
-
+<%= f.fields_for :contact do |u| %>
+<%=u.text_field :street ,:class => 'form-control', "placeholder"=>"strasse" %>
+<%=u.text_field :zip ,:class => 'form-control', "placeholder"=>"postleitzahl" %>
+<%=u.text_field :city ,:class => 'form-control pad', "placeholder"=>"stadt" %>
+<%=u.text_field :mobile,:class => 'form-control', "placeholder"=>"mobile"  %>
+<% end %>
 
 </br>
 <div>
-	<%=  submit_tag nil, :class => "form_submit" ,:class=>"btn btn-lg btn-primary btn-block"%>
+<%= f.submit "senden" , :class => "form_submit" ,:class=>"btn btn-lg btn-primary btn-block" %>
 </div>
 </br>
 <div class="pull-right">
@@ -30,6 +34,12 @@
 </div>
 
 
+
 <% end %>
+
+
+
+
+
 
 

@@ -4,49 +4,41 @@ class RegistrationController < Devise::RegistrationsController
   
   def new
 
-    @user= User.new
-    @contact = Contact.new
-     @person = Person.new
-    
+    @person= Person.new
+    @person.build_user
+    @person.build_contact
   end
 
   def create
+    @person= Person.new
+    @person.build_user
+    @person.build_contact
     
-    @user = User.new
-    @user.username = params[:user][:username]
-    @user.email = params[:user][:email]
-    @user.password = params[:user][:password]
-    @user.password_confirmation =params[:user][:password_confirmation]
+    @user =  @person.user
+    @user.username = params[:person][:user_attributes][:username]
+    @user.email = params[:person][:user_attributes][:email]
+    @user.password = params[:person][:user_attributes][:password]
+    @user.password_confirmation =params[:person][:user_attributes][:password_confirmation]
     
-    @person = Person.new
+ 
     @person.lastname = params[:person][:lastname]
     @person.firstname = params[:person][:firstname]
 
-    @contact = Contact.new
-    @contact.mobile = params[:contact][:mobile]
-    @contact.zip = params[:contact][:zip]
-    @contact.street = params[:contact][:street]
-    @contact.city = params[:contact][:city]
-    @user.valid?
-    @contact.valid?
-    @person.valid?
-    
-    if @user.errors.blank? and @person.contact.blank? and @contact.person.blank?
+    @contact =  @person.contact
+    @contact.mobile = params[:person][:contact_attributes][:mobile]
+    @contact.zip = params[:person][:contact_attributes][:zip]
+    @contact.street = params[:person][:contact_attributes][:street]
+    @contact.city = params[:person][:contact_attributes][:city]
 
-      @user.save
-      @contact.person = @person
-      @contact.save
-      @person.contact = @contact
-      @person.user = @user
-      @contact.save     
-      redirect_to home_path
+   
+    if @person.valid?
+      @person.save
+      redirect_to "/users/sign_in"
     else
-      
-      flash[:danger] = @contact.errors.full_messages.to_sentence
-      flash[:danger] << @user.errors.full_messages.to_sentence
-      flash[:danger] << @person.errors.full_messages.to_sentence
+      #flash[:danger] =@person.errors.full_messages.to_sentence 
       render :action => :new
     end
   end
+  
 
 end

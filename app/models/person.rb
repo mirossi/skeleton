@@ -5,4 +5,6 @@ class Person < ActiveRecord::Base
  
   has_one :contact
   belongs_to :user
+    accepts_nested_attributes_for :contact
+  accepts_nested_attributes_for  :user
 end

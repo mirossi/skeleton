@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
 
   has_one :person
   has_many :comments
+  
+  accepts_nested_attributes_for :person
 
 end
