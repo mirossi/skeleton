@@ -1,4 +1,11 @@
-@import "bootstrap";
+.field_with_errors {
+  padding: 0px;
+  border-radius: 4px;
+  border: 1px solid red; 
+  background-color: transparent;
+  display: -webkit-box; }
+
+.new_user {@extend .form-signin}
 
 body {
   padding-top: 40px;
@@ -39,7 +46,10 @@ body {
 
 
 
-.new_user {@extend .form-signin}
+
+
+
+
 
 
 

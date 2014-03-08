@@ -56,9 +56,15 @@ Skeleton::Application.routes.draw do
   #     resources :products
   #   end
   devise_for :users,:controllers => { :registrations =>'registration'}
+  devise_scope :user do
+    get "/users" => "registration#new"
+  end
+    
     resources :comments
     
     root :to => "home#index"
     get 'home' => 'home#index'
+  
+
   
 end
