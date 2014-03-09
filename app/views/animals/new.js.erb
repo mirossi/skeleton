@@ -1,0 +1,3 @@
+$('#my-modal-body').html("<%= escape_javascript("#{render :partial => 'form', :locals => { :comment => @comment }}").html_safe %>");
+modal_callback_before();
+$('#myModal').modal('show')

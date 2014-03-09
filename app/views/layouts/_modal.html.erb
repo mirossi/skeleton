@@ -1,0 +1,51 @@
+    
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body" id="my-modal-body">
+        ...
+      </div>
+    <!-- <div class="modal-footer" id="myModelActions">
+             <div class="modal-footer" id="myModelActions">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="modalsave">Save changes</button>
+      </div>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function modal_callback_after()
+{
+ $.ajax({
+      url: "/animals",
+        type: "GET",
+        dataType: "html",
+        success: function (data) {
+            myhtml = $.parseHTML( data );
+            $('#myModal').modal('hide');
+             $('#theMainDiv').html($(data).filter('#theMainDiv').html());
+        },
+        error: function (xhr, status) {
+            alert("Sorry, there was a problem!");
+        },
+        complete: function (xhr, status) {
+            //$('#showresults').slideDown('slow')
+        }
+    });
+}
+  function modal_callback_before()
+  {    
+     //$('#myModelActions').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
+     //$('#myModal .actions').appendTo('#myModelActions');
+    
+    
+  }
+  
+ </script>
