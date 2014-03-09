@@ -59,3 +59,7 @@ gem 'growlyflash'
 
 gem 'rails-i18n'
 
+
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
+

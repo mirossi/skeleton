@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-
+//= require dataTables/jquery.dataTables
 //= require bootstrap
 //see https://github.com/estum/growlyflash:
 //= require growlyflash/growlyflash 
 // #//= require_tree .
+
+
