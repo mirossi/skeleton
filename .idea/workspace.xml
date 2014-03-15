@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="930c2743-8f44-4856-b067-1324e55ed47e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20140314185644_remove_id_from_person_and_contact.rb" afterPath="$PROJECT_DIR$/db/migrate/20140314185644_remove_id_from_person_and_contact.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20140314185942_change_person_has_contacty.rb" afterPath="$PROJECT_DIR$/db/migrate/20140314185942_change_person_has_contacty.rb" />
     </list>
     <ignored path="skeleton.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,10 +90,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20140314185644_remove_id_from_person_and_contact.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="20140314185644_remove_id_from_person_and_contact.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20140314185644_remove_id_from_person_and_contact.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="5" selection-start="133" selection-end="133" vertical-scroll-proportion="0.1" vertical-offset="0" max-vertical-offset="510">
+            <state line="3" column="5" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20140314185942_change_person_has_contacty.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20140314185942_change_person_has_contacty.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.34764826" vertical-offset="0" max-vertical-offset="489">
               <folding />
             </state>
           </provider>
@@ -151,7 +160,6 @@
         <option value="$PROJECT_DIR$/Gemfile.lock" />
         <option value="$PROJECT_DIR$/app/models/person_has_contact.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20140314184157_remove_contact_from_person.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20140314185942_change_person_has_contacty.rb" />
         <option value="$PROJECT_DIR$/app/models/contact.rb" />
         <option value="$PROJECT_DIR$/app/models/person.rb" />
         <option value="$PROJECT_DIR$/app/views/registration/new.html.erb" />
@@ -168,6 +176,7 @@
         <option value="$PROJECT_DIR$/app/models/image.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/db/migrate/20140314185644_remove_id_from_person_and_contact.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20140314185942_change_person_has_contacty.rb" />
       </list>
     </option>
   </component>
@@ -792,11 +801,6 @@
         <state line="4" column="0" selection-start="168" selection-end="267" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20140314185942_change_person_has_contacty.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="39" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20140314183421_create_person_has_contacts.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="114" selection-end="162" vertical-scroll-proportion="0.05875576" vertical-offset="0" max-vertical-offset="868" />
@@ -1022,7 +1026,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20140314185644_remove_id_from_person_and_contact.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="5" selection-start="133" selection-end="133" vertical-scroll-proportion="0.1" vertical-offset="0" max-vertical-offset="510">
+        <state line="3" column="5" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20140314185942_change_person_has_contacty.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.34764826" vertical-offset="0" max-vertical-offset="489">
           <folding />
         </state>
       </provider>

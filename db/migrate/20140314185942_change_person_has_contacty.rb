@@ -8,4 +8,3 @@ class ChangePersonHasContacty < ActiveRecord::Migration
 
   end
 end
-add_column :person_has_contacts, :person_id, :integer
