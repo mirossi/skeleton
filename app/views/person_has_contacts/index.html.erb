@@ -1,0 +1,29 @@
+<h1>Listing person_has_contacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Person</th>
+      <th>Contact</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @person_has_contacts.each do |person_has_contact| %>
+      <tr>
+        <td><%= person_has_contact.person %></td>
+        <td><%= person_has_contact.contact %></td>
+        <td><%= link_to 'Show', person_has_contact %></td>
+        <td><%= link_to 'Edit', edit_person_has_contact_path(person_has_contact) %></td>
+        <td><%= link_to 'Destroy', person_has_contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Person has contact', new_person_has_contact_path %>

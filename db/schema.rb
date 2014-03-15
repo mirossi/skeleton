@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140308211821) do
+ActiveRecord::Schema.define(version: 20140314224433) do
 
   create_table "animals", force: true do |t|
     t.string   "name"
@@ -28,20 +28,36 @@ ActiveRecord::Schema.define(version: 20140308211821) do
   end
 
   create_table "contacts", force: true do |t|
-    t.string  "mobile",    default: "", null: false
-    t.integer "person_id"
+    t.string  "mobile", default: "", null: false
     t.string  "street"
     t.integer "zip"
     t.string  "city"
   end
 
-  create_table "people", force: true do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.integer  "contact_id"
+  create_table "images", force: true do |t|
+    t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  create_table "people", force: true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "person_has_contacts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "person_id"
+    t.integer  "contact_id"
   end
 
   create_table "trees", force: true do |t|

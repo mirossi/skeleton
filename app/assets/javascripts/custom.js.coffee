@@ -23,7 +23,7 @@ $.bootstrapGrowl.defaults = $.extend on, $.bootstrapGrowl.defaults,
   #  error:   "error"
   #  notice:  "info"
   #  success: "success"
-  type:        "danger"
+  type:        "info"
 
 
   # Horizontal aligning (left, right or center)

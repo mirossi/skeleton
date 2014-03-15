@@ -59,7 +59,13 @@ gem 'growlyflash'
 
 gem 'rails-i18n'
 
+group :development do
+  gem 'sprockets', '2.11.0'
+end
 
-  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
+gem 'jquery-datatables-rails'
 
+gem "paperclip"
+
+gem "paperclip-dropbox"

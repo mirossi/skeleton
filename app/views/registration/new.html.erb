@@ -13,7 +13,7 @@
   <%=f.text_field :lastname ,:class => 'form-control', "placeholder"=>"lastname" %>
 </p>
 
-<%= f.fields_for :contact do |u| %>
+<%= f.fields_for :contacts  do |u| %>
 <%=u.text_field :street ,:class => 'form-control', "placeholder"=>"strasse" %>
 <%=u.text_field :zip ,:class => 'form-control', "placeholder"=>"postleitzahl" %>
 <%=u.text_field :city ,:class => 'form-control', "placeholder"=>"stadt" %>

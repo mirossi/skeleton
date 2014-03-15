@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="907198980">
+    <data-source source="LOCAL" name="Rails skeleton: development" uuid="69f370ce-b8ac-443a-b386-c71ab74243cb">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1/zeitwein_db</jdbc-url>
+      <user-name>zeitwein</user-name>
+      <user-password>dfd0dfcfdfc3dfdedfdddfcfdfc3dfc4</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails skeleton: test" uuid="28d6d805-88a5-49c8-99ba-7896aa07d828">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1/zeitwein_db_test</jdbc-url>
+      <user-name>zeitwein</user-name>
+      <user-password>dfd0dfcfdfc3dfdedfdddfcfdfc3dfc4</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails skeleton: production" uuid="a2a837b2-a3db-4918-9731-8917ec8535a0">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/ec2-54-204-41-178.compute-1.amazonaws.com</jdbc-url>
+      <user-name>db2lee6j7oult2</user-name>
+      <user-password>dfdedfcfdfd9dfde</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
