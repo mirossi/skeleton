@@ -1,5 +1,7 @@
 Skeleton::Application.routes.draw do
 
+  resources :wines
+
   resources :images
 
   resources :person_has_contacts

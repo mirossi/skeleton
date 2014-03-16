@@ -1,0 +1,42 @@
+<h1>Listing wines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pic</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+   </tr>
+  </thead>
+
+  <tbody>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td>
+          <% wine.images.each do |img|  %>
+          <img src=" <%= img.picture.url(:thumb) %>" width="60" height="60"  alt="No Pic">
+          <% end%>
+          <% if wine.images.empty?  %>
+              <img src="" width="60" height="60"  alt="No Pic">
+          <% end%>
+
+        </td>
+
+        <td><%= wine.name %></td>
+        <td><%= wine.year %></td>
+        <td><%=Country[wine.country_code].translations['de'] %></td>
+        <td><%= link_to 'Show', wine %></td>
+        <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
+        <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wine', new_wine_path %>

@@ -69,3 +69,6 @@ gem 'jquery-datatables-rails'
 gem "paperclip"
 
 gem "paperclip-dropbox"
+
+gem 'countries'
+gem 'country_select'
