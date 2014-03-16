@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="930c2743-8f44-4856-b067-1324e55ed47e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="skeleton.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,19 +70,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="development.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="development.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="44" selection-start="667" selection-end="688" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+            <state line="29" column="82" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.65039575" vertical-offset="0" max-vertical-offset="901">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="production.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="52" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.3328786" vertical-offset="861" max-vertical-offset="1666">
+            <state line="65" column="52" selection-start="2736" selection-end="2736" vertical-scroll-proportion="-19.96" vertical-offset="606" max-vertical-offset="1666">
               <folding />
             </state>
           </provider>
@@ -148,8 +149,8 @@
         <option value="$PROJECT_DIR$/app/views/wines/show.html.erb" />
         <option value="$PROJECT_DIR$/config/initializers/smtp_settings.rb" />
         <option value="$PROJECT_DIR$/config/initializers/devise.rb" />
-        <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
+        <option value="$PROJECT_DIR$/config/environments/development.rb" />
       </list>
     </option>
   </component>
@@ -956,16 +957,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
+    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="44" selection-start="667" selection-end="688" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+        <state line="65" column="52" selection-start="2736" selection-end="2736" vertical-scroll-proportion="-19.96" vertical-offset="606" max-vertical-offset="1666">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
+    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="52" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.3328786" vertical-offset="861" max-vertical-offset="1666">
+        <state line="29" column="82" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.65039575" vertical-offset="0" max-vertical-offset="901">
           <folding />
         </state>
       </provider>
