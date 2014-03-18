@@ -18,7 +18,7 @@
       <tr>
         <td>
           <% wine.images.each do |img|  %>
-          <img src=" <%= img.get_url_thumb %>" width="60" height="60"  alt="No Pic">
+          <img src=" <%= img.picture.url(:thumb) if img.picture.exists? %>" width="60" height="60"  alt="No Pic">
           <% end%>
           <% if wine.images.empty?  %>
               <img src="" width="60" height="60"  alt="No Pic">

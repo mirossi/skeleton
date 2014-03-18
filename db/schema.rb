@@ -28,11 +28,10 @@ ActiveRecord::Schema.define(version: 20140318094058) do
   end
 
   create_table "contacts", force: true do |t|
-    t.string  "mobile",                 default: "", null: false
+    t.string  "mobile", default: "", null: false
     t.string  "street"
     t.integer "zip"
     t.string  "city"
-    t.integer "person_has_contacts_id"
   end
 
   create_table "images", force: true do |t|
@@ -52,7 +51,6 @@ ActiveRecord::Schema.define(version: 20140318094058) do
   create_table "people", force: true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.integer  "contact_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
