@@ -1,0 +1,11 @@
+development:
+  subpath: dev
+  absPath: https://dl.dropboxusercontent.com/1/view/ssvl1fdyiq9c821/Apps/ZeitWein/dev/
+
+test:
+  subpath: test
+  absPath: https://dl.dropboxusercontent.com/1/view/uwmdp5nda6to86q/Apps/ZeitWein/test/
+
+production:
+  subpath: prod
+  absPath: https://dl.dropboxusercontent.com/1/view/uwmdp5nda6to86q/Apps/ZeitWein/prod/
