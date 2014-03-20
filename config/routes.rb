@@ -1,12 +1,12 @@
 Skeleton::Application.routes.draw do
 
+  resources :shops
+
   resources :wines
 
   resources :images
 
   resources :person_has_contacts
-
-  resources :animals
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -71,6 +71,8 @@ Skeleton::Application.routes.draw do
     
     root :to => "home#index"
     get 'home' => 'home#index'
+  
+  get	 '/images/:id/redir(.:format)'  =>	 'images#redir'
   
 
   

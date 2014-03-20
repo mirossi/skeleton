@@ -1,6 +1,22 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
+  def redir
+    @image = Image.find(params[:id])
+    if(!@image.nil? and @image.picture.exists?)
+    if(params[:style]=='original')
+      redirect_to @image.picture.url 
+     elsif (params[:style].nil?)
+       redirect_to @image.picture.url  
+    else
+       redirect_to @image.picture.url(params[:style]) 
+    end
+      
+    else
+      redirect_to ActionController::Base.helpers.asset_path("no-pic.jpg") 
+    end
+  end
+  
   # GET /images
   # GET /images.json
   def index

@@ -1,0 +1,71 @@
+<%= form_for(@shop, html: {class: "form-horizontal"}) do |f| %>
+  <% if @shop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+
+      <ul>
+      <% @shop.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label">Name</label>
+      <div class="col-sm-10">
+        <%= f.text_field :name, :class => 'form-control', "placeholder"=> "name"%>
+      </div>
+    </div>
+
+   <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label">Strasse</label>
+      <div class="col-sm-10">
+        <%= f.text_field :street, :class => 'form-control', "placeholder"=> "strasse"%>
+      </div>
+    </div>
+   <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label">Postleitzahl</label>
+      <div class="col-sm-10">
+        <%= f.text_field :zipcode, :class => 'form-control', "placeholder"=> "postleitzahl"%>
+      </div>
+    </div>
+   <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label">Stadt</label>
+      <div class="col-sm-10">
+        <%= f.text_field :city, :class => 'form-control', "placeholder"=> "stadt"%>
+      </div>
+    </div>
+   <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label">Tel</label>
+      <div class="col-sm-10">
+        <%= f.number_field :phone, :class => 'form-control', "placeholder"=> "tel"%>
+      </div>
+    </div>
+   <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label">Land</label>
+      <div class="col-sm-10">
+         <%= f.country_select :country_code,  ['CH'], iso_codes: true ,:class => 'form-control', "placeholder"=> "land" %>
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label"><%=  %>Kommentar</label>
+      <div class="col-sm-10">
+        <%= f.text_area :comment, rows:4 ,:class => 'form-control', "placeholder"=> "kommentar" %>
+      </div>
+   </div>
+
+
+    <div class="form-group">
+      <div class="text-right">
+        <div class="col-sm-12">
+        <%= f.submit :class => 'btn btn-primary' %>
+          <%= local_assigns[:extrabuttons].html_safe%>
+           
+          
+        </div>
+      </div>
+    </div>
+
+<% end %>

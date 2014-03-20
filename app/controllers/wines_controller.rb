@@ -31,6 +31,7 @@ class WinesController < ApplicationController
   # POST /wines.json
   def create
     @wine = Wine.new(wine_params)
+    @wine.user= current_user
 
     respond_to do |format|
       if @wine.save

@@ -15,9 +15,9 @@
 
 <%= f.fields_for :contacts  do |u| %>
 <%=u.text_field :street ,:class => 'form-control', "placeholder"=>"strasse" %>
-<%=u.text_field :zip ,:class => 'form-control', "placeholder"=>"postleitzahl" %>
+<%=u.number_field :zip ,:class => 'form-control', "placeholder"=>"postleitzahl" %>
 <%=u.text_field :city ,:class => 'form-control', "placeholder"=>"stadt" %>
-<%=u.text_field :mobile,:class => 'form-control', "placeholder"=>"mobile"  %>
+<%=u.number_field :mobile,:class => 'form-control', "placeholder"=>"mobile"  %>
 <% end %>
 </p>
   

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_one :person
   has_many :comments
+  has_many :wines
+    has_many :shops
   
   accepts_nested_attributes_for :person
 

@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+ <div class="panel-heading">
+   <h1 class="panel-title"><strong>Shop editieren</strong></h1></div>
+  <div class="panel-body">
+    <%= render 'form',  :mytest => "Hi",:extrabuttons => "#{link_to 'Löschen', @shop, method: :delete, data: { confirm: 'Sicher?' }, 'class' => "btn btn-danger"} #{link_to 'Zurück', shops_path , :class => 'btn btn-default'}"  %>
+
+</div>
+</div>
+
+
+

@@ -19,4 +19,7 @@
 //= require growlyflash/growlyflash 
 // #//= require_tree .
 
+jQuery(document).ready(function() {
+    jQuery("img.lazy").lazy();
+});
 

@@ -15,7 +15,11 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><img src="<%= image.picture.url(:thumb) %>" width="60" height="60"  alt="test"> </td>
+        <td><img class="lazy" data-src="<%= url_for :controller => 'images', :action => 'redir', :id => image.id%>" src="<%= asset_path("loading.gif")  %>" border="0" width="60" height="60"  alt="Lazy Image" /></td>
+<% if false %>
+ <td><img src="<%= image.picture.url(:thumb) if img.picture.exists? %>" width="60" height="60"  alt="test"> </td>
+<% end %>
+       
         <td><%= image.name %></td>
         <td><%= image.user_id %></td>
         <td><%= link_to 'Show', image %></td>
