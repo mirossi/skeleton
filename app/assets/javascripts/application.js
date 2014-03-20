@@ -11,15 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+
+
 //= require dataTables/jquery.dataTables
 //= require bootstrap
 //see https://github.com/estum/growlyflash:
 //= require growlyflash/growlyflash 
 // #//= require_tree .
+//= require turbolinks
 
-jQuery(document).ready(function() {
-    jQuery("img.lazy").lazy();
+
+$(document).ready(function () {
+    $("img.lazy").lazy();
 });
-

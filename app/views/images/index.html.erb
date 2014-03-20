@@ -19,7 +19,9 @@
 <% if false %>
  <td><img src="<%= image.picture.url(:thumb) if img.picture.exists? %>" width="60" height="60"  alt="test"> </td>
 <% end %>
-       
+
+
+
         <td><%= image.name %></td>
         <td><%= image.user_id %></td>
         <td><%= link_to 'Show', image %></td>
@@ -33,3 +35,11 @@
 <br>
 
 <%= link_to 'New Image', new_image_path %>
+
+<script>
+
+
+    $(document).ready(function () {
+        $("img.lazy").lazy();
+    });
+</script>

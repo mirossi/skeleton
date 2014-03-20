@@ -1,9 +1,24 @@
 @import "bootstrap";
 
+
+
 #myContextMenu {
-    position: fixed;
-    display:none;
+  position: fixed;
+  display:none;
 }
+select{
+  @extend .form-control;}
+
+input[type="text"]{
+  @extend .form-control;}
+
+.listitem a {
+  color: #000; }
+a:visited {
+  color: #666; }
+a:hover {
+  color: #000;
+  background-color: #000; }
 
 
 
@@ -13,16 +28,4 @@
 
 
 
-select{
-@extend .form-control;}
 
-input[type="text"]{
-  @extend .form-control;}
-
-.listitem a {
-  color: #000; }
-  a:visited {
-    color: #666; }
-  a:hover {
-    color: #000;
-    background-color: #000; }

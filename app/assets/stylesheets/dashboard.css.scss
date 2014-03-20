@@ -3,6 +3,17 @@
  */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
+
+.btn-primary:visited{
+  color: #ffffff;
+}
+
+
+.list-group-item:hover{
+  color: #000000;
+
+}
+
 body {
   padding-top: 50px;
 }

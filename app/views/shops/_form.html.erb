@@ -1,7 +1,7 @@
 <%= form_for(@shop, html: {class: "form-horizontal"}) do |f| %>
   <% if @shop.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+      <div class="alert alert-danger">
+      <h4><%= pluralize(@shop.errors.count, "Fehler") %>, konnte nicht gespeichert werden:</h4>
 
       <ul>
       <% @shop.errors.full_messages.each do |msg| %>
@@ -60,7 +60,7 @@
     <div class="form-group">
       <div class="text-right">
         <div class="col-sm-12">
-        <%= f.submit :class => 'btn btn-primary' %>
+        <%= f.submit "Ok", :class => 'btn btn-primary' %>
           <%= local_assigns[:extrabuttons].html_safe%>
            
           

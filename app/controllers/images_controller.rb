@@ -5,15 +5,15 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     if(!@image.nil? and @image.picture.exists?)
     if(params[:style]=='original')
-      redirect_to @image.picture.url 
+      redirect_to @image.picture.url
      elsif (params[:style].nil?)
-       redirect_to @image.picture.url  
+       redirect_to @image.picture.url
     else
-       redirect_to @image.picture.url(params[:style]) 
+       redirect_to @image.picture.url(params[:style])
     end
       
     else
-      redirect_to ActionController::Base.helpers.asset_path("no-pic.jpg") 
+      redirect_to ActionController::Base.helpers.asset_path("no-pic.jpg")
     end
   end
   

@@ -18,7 +18,7 @@
       <tr>
         <td>
           <% wine.images.each do |img|  %>
-          <img src=" <%= img.picture.url(:thumb) if img.picture.exists? %>" width="60" height="60"  alt="No Pic">
+            <td><img class="lazy" data-src="<%= url_for :controller => 'images', :action => 'redir', :id => img.id%>" src="<%= asset_path("loading.gif")  %>" border="0" width="60" height="60"  alt="Lazy Image" /></td>
           <% end%>
           <% if wine.images.empty?  %>
               <img src="" width="60" height="60"  alt="No Pic">
@@ -40,3 +40,5 @@
 <br>
 
 <%= link_to 'New Wine', new_wine_path %>
+
+
