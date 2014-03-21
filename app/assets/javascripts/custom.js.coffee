@@ -1,8 +1,6 @@
 
 
 
-
-
 $.bootstrapGrowl.defaults = $.extend on, $.bootstrapGrowl.defaults,
   # Box width (number or css-like string, etc. "auto")
   width:       300
