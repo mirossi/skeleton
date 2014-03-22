@@ -74,6 +74,9 @@ function deleteItem(theURL){
                 success: function (data) {
                     $('#myModal').modal('hide');
                     $('#theList').html($(data).find('#theList').html());
+                    $(".listitem a").removeAttr('href');
+                    $(".listitem").unbind( "click" );
+                    $(".listitem").on("click",function (){openModular($(this).attr("resItem") + "/edit");});
                 },
                 error: function (xhr, status) {
                     alert("Sorry, there was a problem!");
