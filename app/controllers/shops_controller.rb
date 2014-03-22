@@ -42,10 +42,12 @@ class ShopsController < ApplicationController
   def update
     respond_to do |format|
       if @shop.update(shop_params)
+       # response.headers["status"]="200"
         format.html { redirect_to shops_url, notice: 'Shop was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        #response.headers["status"]="202"
+        format.html {render action: 'edit', :status => 202 }
         format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end

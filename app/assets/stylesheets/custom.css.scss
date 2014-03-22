@@ -14,12 +14,12 @@ input[type="text"]{
 
 .listitem a {
   color: #000; }
-a:visited {
-  color: #666; }
 a:hover {
   color: #000;
   background-color: #000; }
 
+.btn-danger a:visited {
+  color: #ffffff; }
 
 
 .panel-default > .panel-heading {

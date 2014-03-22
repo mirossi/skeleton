@@ -20,14 +20,13 @@
 
 //see https://github.com/estum/growlyflash:
 //= require growlyflash/growlyflash
-// #//= require_tree .
+//= require_tree .
 
 //= require bootstrap
 //= require turbolinks
 
-//$(document).on('ready page:load', function () {
-//    $("img.lazy").lazy();
-//});
+
+
 $(document).ready(function () {
     $("img.lazy").lazy();
 });
