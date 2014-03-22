@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="930c2743-8f44-4856-b067-1324e55ed47e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/images.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/jquery.form.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/shops.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shops/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/shops/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shops/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/shops/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/images/index.html.erb" afterPath="$PROJECT_DIR$/app/views/images/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shops/index.html.erb" afterPath="$PROJECT_DIR$/app/views/shops/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shops/new.html.erb" afterPath="$PROJECT_DIR$/app/views/shops/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/shops.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/shops.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/shops_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/shops_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -28,7 +18,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/skeleton@IRB_console__skeleton.coverage" NAME="IRB console: skeleton Coverage Results" MODIFIED="1394823779571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="skeleton" />
     <SUITE FILE_PATH="coverage/skeleton@Production__skeleton.coverage" NAME="Production: skeleton Coverage Results" MODIFIED="1394757327446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="skeleton" />
-    <SUITE FILE_PATH="coverage/skeleton@Development__skeleton.coverage" NAME="Development: skeleton Coverage Results" MODIFIED="1395487393706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="skeleton" />
+    <SUITE FILE_PATH="coverage/skeleton@Development__skeleton.coverage" NAME="Development: skeleton Coverage Results" MODIFIED="1395493633738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="skeleton" />
     <SUITE FILE_PATH="coverage/skeleton@db_migrate__skeleton.coverage" NAME="db:migrate: skeleton Coverage Results" MODIFIED="1394997612750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="skeleton" />
     <SUITE FILE_PATH="coverage/skeleton@db_reset__skeleton.coverage" NAME="db:reset: skeleton Coverage Results" MODIFIED="1394997665026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="skeleton" />
     <SUITE FILE_PATH="coverage/skeleton@Rails_console__skeleton.coverage" NAME="Rails console: skeleton Coverage Results" MODIFIED="1394999343726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="skeleton" />
@@ -62,7 +52,7 @@
       <file leaf-file-name="shops.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/shops.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="61" selection-start="782" selection-end="782" vertical-scroll-proportion="0.52577317" vertical-offset="0" max-vertical-offset="1904">
+            <state line="40" column="50" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.3208763" vertical-offset="431" max-vertical-offset="2261">
               <folding />
             </state>
           </provider>
@@ -98,7 +88,7 @@
       <file leaf-file-name="shops_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/shops_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="8" selection-start="970" selection-end="970" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1394">
+            <state line="63" column="7" selection-start="1608" selection-end="1608" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1411">
               <folding />
             </state>
           </provider>
@@ -178,9 +168,9 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.css.scss" />
         <option value="$PROJECT_DIR$/app/views/shops/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/shops/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/shops_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/shops/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/shops/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/shops_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/shops.js" />
       </list>
     </option>
@@ -675,7 +665,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="7" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933232" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -687,7 +677,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19023438" sideWeight="0.5708955" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39834958" sideWeight="0.49921876" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24752475" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39834958" sideWeight="0.50039065" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39834958" sideWeight="0.50078124" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.348087" sideWeight="0.49921876" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1024,13 +1014,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/shops_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="8" selection-start="970" selection-end="970" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1394">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="776">
@@ -1061,16 +1044,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shops/new.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/shops/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="118" selection-start="284" selection-end="284" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="289">
+        <state line="4" column="269" selection-start="408" selection-end="429" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="289">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shops/edit.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/shops/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="269" selection-start="408" selection-end="429" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="289">
+        <state line="4" column="118" selection-start="284" selection-end="284" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="289">
           <folding />
         </state>
       </provider>
@@ -1087,9 +1070,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/shops_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="7" selection-start="1608" selection-end="1608" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1411">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/shops.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="61" selection-start="782" selection-end="782" vertical-scroll-proportion="0.52577317" vertical-offset="0" max-vertical-offset="1904">
+        <state line="40" column="50" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.3208763" vertical-offset="431" max-vertical-offset="2261">
           <folding />
         </state>
       </provider>

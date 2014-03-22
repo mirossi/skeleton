@@ -31,6 +31,7 @@ class ShopsController < ApplicationController
         format.html { redirect_to shops_url, notice: 'Shop was successfully created.' }
         format.json { render action: 'show', status: :created, location: @shop }
       else
+        format.html {render action: 'edit', :status => 202 }
         format.html { render action: 'new' }
         format.json { render json: @shop.errors, status: :unprocessable_entity }
       end

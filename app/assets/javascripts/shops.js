@@ -20,7 +20,6 @@ $(document).ready(function () {
     $("#new_item").on("click", function () {
     openModular($("#new_item").attr("resItem"));
     });
-
     $(".listitem a").removeAttr('href');
     $(".listitem").on("click",function (){openModular($(this).attr("resItem") + "/edit");});
 
@@ -34,14 +33,19 @@ function openModular(theURL){
         dataType: "html",
         success: function (data) {
             $('#my-modal-body').html($(data).filter('#theMainDiv').html());
-            //$('#MyDeleteButton').removeAttr('href');
-            //$('#MyDeleteButton').removeAttr('data-confirm');
-            //$('#MyDeleteButton').removeAttr('data-method');
-//            $('#MyDeleteButton').removeAttr('rel');
-//            $("#MyDeleteButton").on("click", function () {deleteItem($("#MyDeleteButton").attr("resItem"))});
+            $('#MyDeleteButton').removeAttr('href');
+            $('#MyDeleteButton').removeAttr('data-confirm');
+            $('#MyDeleteButton').removeAttr('data-method');
+            $('#MyDeleteButton').removeAttr('rel');
+            $("#MyDeleteButton").on("click", function () {
+                var r = confirm("Wirklich löschen?");
+                if (r == true)
+                {
+                    deleteItem(theURL.substring(0, theURL.length - 5));
+                }
+                });
             $('#MyBackButton').removeAttr('href');
             $("#MyBackButton").on("click", function () { $('#myModal').modal('hide')});
-            // $('#MySubmitButton').replaceWith('<a class="btn btn-primary"  id="MySubmitButton" rel="nofollow">Ok</a>');
             $("#MySubmitButton").on("click", function () {
                     $('#MyForm').ajaxForm({
                         success:       showResponse  // post-submit callback
@@ -57,28 +61,45 @@ function openModular(theURL){
     })
 }
 
-//function deleteItem(theURL){
-//    $.ajax({
-//        url: theURL,
-//        type: "DELETE",
-//        dataType: "html",
-//        success: function (data) {
-//            $('#myModal').modal('hide');
-//            $('#theList').html($(responseText).find('#theList').html());
-//        },
-//        error: function (xhr, status) {
-//            alert("Sorry, there was a problem!");
-//        },
-//        complete: function (xhr, status) {
-//        }
-//    });
-//}
+function deleteItem(theURL){
+    $.ajax({
+        url: theURL,
+        type: "DELETE",
+        dataType: "JSON",
+        success: function (data) {
+            $.ajax({
+                url: theURL.substring(0, theURL.lastIndexOf("/")),
+                type: "get",
+                dataType: "html",
+                success: function (data) {
+                    $('#myModal').modal('hide');
+                    $('#theList').html($(data).find('#theList').html());
+                },
+                error: function (xhr, status) {
+                    alert("Sorry, there was a problem!");
+                },
+                complete: function (xhr, status) {
+                }
+            });
+        },
+        error: function (xhr, status) {
+            alert("Sorry, there was a problem!");
+        },
+        complete: function (xhr, status) {
+        }
+    });
+}
 
 // post-submit callback
 function showResponse(responseText, statusText, xhr, $form)  {
     if(xhr.status==200){
         $('#myModal').modal('hide');
         $('#theList').html($(responseText).find('#theList').html());
+
+        $(".listitem a").removeAttr('href');
+        $(".listitem").unbind( "click" );
+        $(".listitem").on("click",function (){openModular($(this).attr("resItem") + "/edit");});
+
 
     }else{
         $('#my-modal-body').html($(responseText).filter('#theMainDiv').html());
