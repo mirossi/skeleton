@@ -1,8 +1,8 @@
 
-<%= form_for(@wine, html: {class: "form-horizontal"} ) do |f| %>
+<%= form_for(@wine, html: {class: "form-horizontal", id: "MyForm"} ) do |f| %>
   <% if @wine.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@wine.errors.count, "error") %> prohibited this wine from being saved:</h2>
+    <div id="alert alert-danger">
+      <h4><%= pluralize(@wine.errors.count, "Fehler") %>, konnte nicht gespeichert werden:</h4>
 
       <ul>
       <% @wine.errors.full_messages.each do |msg| %>
@@ -36,24 +36,24 @@
 
 
 
-    <div class="form-group">
-      <label for="wine-country_code" class="col-sm-2 control-label">Etiquet</label>
-      <div class="col-sm-10">
-        <%= f.fields_for :images do |builder| %>
-            <% if builder.object.picture_content_type.nil? %>
-                <%= builder.file_field :picture %>
-            <% end %>
-        <% end %>
-      </div>
-    </div>
+    <!--<div class="form-group">-->
+      <!--<label for="wine-country_code" class="col-sm-2 control-label">Etiquet</label>-->
+      <!--<div class="col-sm-10">-->
+        <!--<%= f.fields_for :images do |builder| %>-->
+            <!--<% if builder.object.picture_content_type.nil? %>-->
+                <!--<%= builder.file_field :picture %>-->
+            <!--<% end %>-->
+        <!--<% end %>-->
+      <!--</div>-->
+    <!--</div>-->
 
 
 
     <div class="form-group">
       <div class="text-right">
         <div class="col-sm-12">
-        <%= f.submit :class => 'btn btn-primary' %>
-        <%= link_to 'Zrück', wines_path , :class => 'btn btn-default'%>
+        <%= f.submit  "Ok", :class => 'btn btn-primary', :id => "MySubmitButton" %>
+          <%= local_assigns[:extrabuttons].html_safe%>
         </div>
       </div>
     </div>

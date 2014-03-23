@@ -3,7 +3,7 @@
  <div class="panel-heading">
    <h1 class="panel-title"><strong>Neuer Wein erstellen</strong></h1></div>
   <div class="panel-body">
-<%= render 'form' %>
+<%= render 'form',:extrabuttons => "#{link_to 'Zurück', wines_path , :class => 'btn btn-default',:id => "MyBackButton"}" %>
 </div>
 </div>
 </div>

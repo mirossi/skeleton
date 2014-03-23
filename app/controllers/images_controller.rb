@@ -21,6 +21,13 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = Image.all
+    @items = @images
+    @items_name="Bilder"
+    @item_name="Bild"
+    @item_partial="/images/image"
+    @modal=true
+    @controller_name="images"
+    render '/shared/crudajax'
   end
 
   # GET /images/1
@@ -46,7 +53,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
+        format.html { redirect_to action: 'index', notice: 'Image was successfully created.' }
         format.json { render action: 'show', status: :created, location: @image }
       else
         format.html { render action: 'new' }
@@ -60,7 +67,7 @@ class ImagesController < ApplicationController
   def update
     respond_to do |format|
       if @image.update(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
+        format.html { redirect_to action: 'index', notice: 'Image was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

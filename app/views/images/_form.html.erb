@@ -1,9 +1,9 @@
 
 <%= form_for @image, :html => {
-        :class => 'form-horizontal' } do |f| %>
+        :class => 'form-horizontal', id: "MyForm" } do |f| %>
     <% if @image.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+          <h2><%= pluralize(@image.errors.count, "Fehler") %>, konnte nicht gespeichert werden:</h2>
 
           <ul>
             <% @image.errors.full_messages.each do |msg| %>
@@ -14,27 +14,36 @@
     <% end %>
 
 
-    <div class="control-group">
-      <%= f.label :picture, :class => 'control-label' %>
-      <div class="controls">
-        <div class="fileupload fileupload-new" data-provides="fileupload">
-          <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;">
-          </div>
-          <div>
+    <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label">Name</label>
+      <div class="col-sm-10">
+        <%= f.text_field :name, :class => 'form-control', "placeholder"=> "name"%>
+      </div>
+    </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+        <img src="<%= !@image.id.nil? ? url_for(:controller => 'images', :action => 'redir', :id => @image.id) : ""  %>" width="60" height="60"  alt="test">
+      </div>
+      </div>
+
+    <div class="form-group">
       <span class="btn btn-file">
-            <span class="fileupload-new">Select image</span>
-        <span class="fileupload-exists">Change</span>
         <%= f.file_field :picture, :class => 'file_field' %>       </span>
             <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
           </div>
-        </div>
+
+
+
+  <div class="form-group">
+    <div class="text-right">
+      <div class="col-sm-12">
+        <%= f.submit  "Ok", :class => 'btn btn-primary', :id => "MySubmitButton" %>
+        <%= local_assigns[:extrabuttons].html_safe%>
       </div>
     </div>
-    <div class="control-group">
-      <%= f.label :name, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :name, :class => 'text_field' %>
-      </div>   </div>   <div class="form-actions">
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),                 images_path, :class => 'btn' %>   </div>
+  </div>
+
+
+</div>
 <% end %>

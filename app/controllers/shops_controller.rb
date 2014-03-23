@@ -4,12 +4,19 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
-    @shops = Shop.all
+    @items = Shop.all
+    @items_name="Shops"
+    @item_name="Shop"
+    @item_partial="/shops/shop"
+    @controller_name="shops"
+    @modal=true
+    render '/shared/crudajax'
   end
 
   # GET /shops/1
   # GET /shops/1.json
   def show
+
   end
 
   # GET /shops/new
@@ -31,7 +38,7 @@ class ShopsController < ApplicationController
         format.html { redirect_to shops_url, notice: 'Shop was successfully created.' }
         format.json { render action: 'show', status: :created, location: @shop }
       else
-        format.html {render action: 'edit', :status => 202 }
+        format.html {render action: 'edit' }
         format.html { render action: 'new' }
         format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
@@ -48,7 +55,7 @@ class ShopsController < ApplicationController
         format.json { head :no_content }
       else
         #response.headers["status"]="202"
-        format.html {render action: 'edit', :status => 202 }
+        format.html {render action: 'edit'}
         format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end

@@ -2,10 +2,10 @@ class Image < ActiveRecord::Base
   has_attached_file :picture,
                     #:storage => :dropbox,
                     #:dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-                    :styles => { :medium => "300x300>", :thumb => "100x100>" }#,
-
+                    :styles => { :medium => "300x300>", :thumb => "100x100>" }
                     #:dropbox_options => {
-                    #  :path => proc { |style| "#{PAPERCLIP_CONFIG['subpath']}/#{style}/#{id}_#{picture.original_filename}"},  :unique_filename => true
+                     #:path => proc { |style| "#{PAPERCLIP_CONFIG['subpath']}/#{style}/#{id}_#{picture.original_filename}"}
+                 #,  :unique_filename => true
                     #}
 
 

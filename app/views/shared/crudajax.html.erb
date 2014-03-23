@@ -1,0 +1,56 @@
+<%= javascript_include_tag "crudajax.js" %>
+<%= javascript_include_tag "jquery.form.min.js" %>
+<div class="panel panel-default" id="theList">
+  <div class="panel-heading">
+    <h1 class="panel-title"><strong>Alle <%= @items_name %></strong></h1></div>
+  <div class="panel-body">
+
+    <div class="list-group">
+
+      <% @items.each do |item| %>
+          <div class="listitem" resItem=<%= url_for :controller => @controller_name, :action => 'destroy', :id => item.id %>>
+            <a href="<%= url_for :controller => @controller_name, :action => 'edit', :id => item.id %>" class="list-group-item">
+              <%= render @item_partial, item: item %>
+
+            </a>
+          </div>
+      <% end %>
+      <% if @items.empty? or  @items.nil?%>
+          <div class="list-group-item-text" style="padding-left: 20px; padding-top: 5px;">
+            Keine Elemente gefunden.
+          </div>
+      <% end %>
+    </div>
+
+
+  </div>
+</div>
+<div class="text-right">
+  <a class="btn btn-primary"  resItem="<%=   url_for :controller => @controller_name, :action => 'new'  %>" id="new_item">neu</a>
+
+</div>
+
+<div id="myContextMenu" class="dropdown clearfix">
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px;">
+    <li><a tabindex="-1" id="edit_item" >editieren</a></li>
+    <li><a tabindex="-1" data-method="delete" id="delete_item" href="#">löschen</a></li>
+    <li><a tabindex="-1" id="new_item2" resItem="<%=   url_for :controller => @controller_name, :action => 'new'  %>">neu</a></li>
+  </ul>
+</div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-body" id="my-modal-body">
+    </div>
+  </div>
+</div>
+
+
+<script>
+    var $isModal= <%=  @modal ? 1:0 %>;
+    $(document).ready(function () {
+    });
+
+</script>

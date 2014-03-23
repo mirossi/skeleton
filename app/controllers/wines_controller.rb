@@ -5,6 +5,13 @@ class WinesController < ApplicationController
   # GET /wines.json
   def index
     @wines = Wine.all
+    @items = @wines
+    @items_name="Weine"
+    @item_name="Wein"
+    @item_partial="/wines/wine"
+    @modal=false
+    @controller_name="wines"
+    render '/shared/crudajax'
   end
 
   # GET /wines/1
@@ -35,8 +42,8 @@ class WinesController < ApplicationController
 
     respond_to do |format|
       if @wine.save
-        format.html { redirect_to @wine, notice: 'Wine was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @wine }
+        format.html { redirect_to action: 'index', notice: 'Wine was successfully created.' }
+        format.json { render action: 'index', status: :created, location: @wine }
       else
         format.html { render action: 'new' }
         format.json { render json: @wine.errors, status: :unprocessable_entity }
@@ -50,7 +57,7 @@ class WinesController < ApplicationController
 
     respond_to do |format|
       if @wine.update(wine_params)
-        format.html { redirect_to @wine, notice: 'Wine was successfully updated.' }
+        format.html { redirect_to action: 'index', notice: 'Wine was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

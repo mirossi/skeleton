@@ -1,0 +1,17 @@
+
+<div class="list-group-item-text" style="padding-left: 20px; padding-top: 5px;">
+  <table>
+    <tr>
+      <td rowspan="2"><img src="<%= url_for :controller => 'images', :action => 'redir', :id => item.id %>" width="60" height="60"  alt="test"> </td>
+      <% if false %>
+          <td rowspan="2"><img class="lazy" data-src="<%= url_for :controller => 'images', :action => 'redir', :id => item.id%>" src="<%= asset_path("loading.gif")  %>" border="0" width="60" height="60"  alt="Lazy Image" /></td>
+
+      <% end %>
+      <td></td><td style="width:50px">Name:</td><td><%= item.name %></td>
+    </tr><tr>
+      <td></td><td style="width:50px">User:</td><td><%= item.user_id %></td>
+  </tr>
+
+  </table>
+</div>
+

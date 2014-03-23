@@ -1,6 +1,8 @@
-<h1>Editing wine</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title"><strong>Wein editieren</strong></h1></div>
+  <div class="panel-body">
+<%= render 'form' ,:extrabuttons => "#{link_to 'Löschen', @shop, method: :delete, data: { confirm: 'Sicher?' }, 'class' => "btn btn-danger",:id => "MyDeleteButton"} #{link_to 'Zurück', wines_path , :class => 'btn btn-default', :id => "MyBackButton"}" %>
+  </div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @wine %> |
-<%= link_to 'Back', wines_path %>
