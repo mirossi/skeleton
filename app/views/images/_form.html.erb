@@ -22,16 +22,21 @@
     </div>
 
       <div class="form-group">
+        <label for="wine-name" class="col-sm-2 control-label">Preview</label>
         <div class="col-sm-10">
-        <img src="<%= !@image.id.nil? ? url_for(:controller => 'images', :action => 'redir', :id => @image.id) : ""  %>" width="60" height="60"  alt="test">
+       <img id="prew" class="lazy" data-src="<%= !@image.id.nil? ? url_for(:controller => 'images', :action => 'redir', :id => @image.id) : ""  %>" src="<%= !@image.id.nil? ? asset_path("loading.gif") : ""  %>" width="100%">
       </div>
       </div>
 
     <div class="form-group">
-      <span class="btn btn-file">
-        <%= f.file_field :picture, :class => 'file_field' %>       </span>
+      <label for="wine-name" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <%= f.file_field :picture, :class => 'file_field', :id => "MyLoader" %> </span>
+      <% if false%>
             <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+          <% end%>
           </div>
+    </div>
 
 
 
@@ -47,3 +52,25 @@
 
 </div>
 <% end %>
+
+<script>
+
+
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#prew').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#MyLoader").change(function(){
+        readURL(this);
+    });
+
+</script>

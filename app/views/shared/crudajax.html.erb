@@ -1,5 +1,9 @@
 <%= javascript_include_tag "crudajax.js" %>
 <%= javascript_include_tag "jquery.form.min.js" %>
+<%= javascript_include_tag "jquery.blockUI.js" %>
+
+
+
 <div class="panel panel-default" id="theList">
   <div class="panel-heading">
     <h1 class="panel-title"><strong>Alle <%= @items_name %></strong></h1></div>
@@ -8,8 +12,16 @@
     <div class="list-group">
 
       <% @items.each do |item| %>
-          <div class="listitem" resItem=<%= url_for :controller => @controller_name, :action => 'destroy', :id => item.id %>>
-            <a href="<%= url_for :controller => @controller_name, :action => 'edit', :id => item.id %>" class="list-group-item">
+          <% @itemEdit= defined?(@editAcc)?  @editAcc.call(item):false %>
+          <% @itemDel= defined?(@delAcc)?  @delAcc.call(item):false %>
+
+
+          <div class="listitem"
+               resItem=<%= url_for :controller => @controller_name, :action => 'destroy', :id => item.id %>
+          isEditable="<%= @itemEdit %>"
+          isDeletable="<%= @itemDel %>">
+
+            <a href="<%= url_for :controller => @controller_name, :action => 'edit', :id => item.id if @itemEdit %>" class="list-group-item">
               <%= render @item_partial, item: item %>
 
             </a>
@@ -50,7 +62,6 @@
 
 <script>
     var $isModal= <%=  @modal ? 1:0 %>;
-    $(document).ready(function () {
-    });
+    var $IsExtend= <%= defined?(@itemExtend) ? @itemExtend:1 %>;
 
 </script>

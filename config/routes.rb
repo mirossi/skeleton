@@ -1,10 +1,13 @@
 Skeleton::Application.routes.draw do
 
+  get "taster/index"
   resources :shops
 
   resources :wines
 
   resources :images
+
+  resources :tasters
 
   resources :person_has_contacts
 
@@ -73,7 +76,7 @@ Skeleton::Application.routes.draw do
     get 'home' => 'home#index'
   
   get	 '/images/:id/redir(.:format)'  =>	 'images#redir'
-  
+
 
   
 end
