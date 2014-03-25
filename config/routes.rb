@@ -76,6 +76,9 @@ Skeleton::Application.routes.draw do
     get 'home' => 'home#index'
   
   get	 '/images/:id/redir(.:format)'  =>	 'images#redir'
+  
+  get	 '/availableGrapeTypes'  =>	 'wines#availableGrapeTypes'
+   
 
 
   

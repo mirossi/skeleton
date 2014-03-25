@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320161601) do
+ActiveRecord::Schema.define(version: 20140325161159) do
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 20140320161601) do
     t.integer "zip"
     t.string  "city"
     t.integer "person_has_contacts_id"
+  end
+
+  create_table "grapes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "images", force: true do |t|
@@ -90,6 +96,13 @@ ActiveRecord::Schema.define(version: 20140320161601) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "wine_has_grapes", force: true do |t|
+    t.integer  "wine_id"
+    t.integer  "grape_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "wine_has_images", force: true do |t|
     t.integer  "wine_id"
     t.integer  "image_id"
@@ -104,6 +117,7 @@ ActiveRecord::Schema.define(version: 20140320161601) do
     t.datetime "updated_at"
     t.string   "country_code"
     t.integer  "user_id"
+    t.string   "wine_type"
   end
 
 end

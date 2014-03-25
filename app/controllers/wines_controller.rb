@@ -1,5 +1,6 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
+  before_action :provide_params
 
   # GET /wines
   # GET /wines.json
@@ -27,19 +28,26 @@ class WinesController < ApplicationController
 
   # GET /wines/1/edit
   def edit
-
     @wine.images.build
-
-
-
-    end
-
+  end
+  
+  
+  def availableGrapeTypes
+    grapesName= Grape.all.map{|f| f.name}
+    request.format = :json
+    
+    respond_to do |format|
+    format.json  { render :json => grapesName } # don't do msg.to_json
+  end
+    
+  end
+  
   # POST /wines
   # POST /wines.json
   def create
     @wine = Wine.new(wine_params)
     @wine.user= current_user
-
+    parse_and_insert_grapes
     respond_to do |format|
       if @wine.save
         format.html { redirect_to action: 'index', notice: 'Wine was successfully created.' }
@@ -54,7 +62,7 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1
   # PATCH/PUT /wines/1.json
   def update
-
+    parse_and_insert_grapes
     respond_to do |format|
       if @wine.update(wine_params)
         format.html { redirect_to action: 'index', notice: 'Wine was successfully updated.' }
@@ -84,6 +92,16 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :year, :country_code, images_attributes:  [:picture])
+      params.require(:wine).permit(:name, :year, :wine_type, :country_code, images_attributes:  [:picture])
     end
+  
+  def provide_params
+      @grape_names=Grape.all.map{|f| f.name}
+  end
+  
+  def parse_and_insert_grapes
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts  params[:grapes]
+    
+  end
 end

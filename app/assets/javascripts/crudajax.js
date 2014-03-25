@@ -1,7 +1,13 @@
 var $contextMenu;
 var $rowClicked;
+var $isModal;
+var $IsExtend;
 
 $(document).ready(function () {
+  if(!$isModal){
+   $isModal=0; 
+  }
+  
     if ($isModal == 1) {
         $("#new_item").on("click", function () {
             openModular($("#new_item").attr("resItem"));

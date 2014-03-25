@@ -12,8 +12,10 @@
 //
 
 //= require jquery
+//= require jquery.ui.all
 //= require jquery.turbolinks
 //= require jquery_ujs
+
 
 
 //= require dataTables/jquery.dataTables
@@ -23,6 +25,7 @@
 //= require_tree .
 
 //= require bootstrap
+//= require bootstrap-tokenfield
 //= require turbolinks
 
 
