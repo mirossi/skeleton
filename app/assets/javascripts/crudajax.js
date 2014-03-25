@@ -7,7 +7,8 @@ $(document).ready(function () {
             openModular($("#new_item").attr("resItem"));
         });
         $(".listitem a").removeAttr('href');
-        $(".listitem").on("click", function () {
+     
+        $(".listitem[isEditable='true']").on("click", function () {
             openModular($(this).attr("resItem") + "/edit");
         });
     } else {
@@ -26,12 +27,7 @@ $(document).ready(function () {
 $("body").on("contextmenu", ".listitem", function (e) {
     $rowClicked = $(this)
     $contextMenu = $("#myContextMenu");
-    $contextMenu.css({
-        display: "block",
-        left: e.clientX,
-        top: e.clientY,
-        show: true
-    });
+ 
 
     if ($isModal == 1) {
         $("#new_item2").on("click", function () {
@@ -58,24 +54,42 @@ $("body").on("contextmenu", ".listitem", function (e) {
         }
     });
 
+  var atLeastOneOption=false;
     if($rowClicked.attr("isEditable")=="true"){
         $("#edit_item").show();
+                  atLeastOneOption=true;
     }else{
+
         $("#edit_item").hide();
     }
 
     if($rowClicked.attr("isDeletable")=="true"){
+
         $("#delete_item").show();
+                  atLeastOneOption=true;
     }else{
+
         $("#delete_item").hide();
     }
 
     if (!$IsExtend) {
+
         $("#new_item2").hide();
     } else {
+            atLeastOneOption=true;
         $("#new_item2").show();
     }
 
+
+  if(atLeastOneOption){
+      $contextMenu.css({
+        display: "block",
+        left: e.clientX,
+        top: e.clientY,
+        show: true
+    });
+  }
+  
     return false;
 });
 

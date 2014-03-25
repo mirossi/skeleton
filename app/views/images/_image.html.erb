@@ -10,7 +10,7 @@
       <% end %>
       <td></td><td style="width:50px">Name:</td><td><%= item.name %></td>
     </tr><tr>
-      <td></td><td style="width:50px">User:</td><td><%= item.user.person.firstname %></td>
+      <td></td><td style="width:50px">User:</td><td><%= item.user.person.firstname if !item.user.nil? %></td>
   </tr>
 
   </table>

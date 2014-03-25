@@ -3,7 +3,7 @@
   <table>
     <tr>
       <td style="width:70px">Name:</td>
-      <td><%= "#{item.person.firstname}  #{item.person.lastname}"%></td>
+      <td><%= "#{item.person.firstname if !item.person.nil?}  #{item.person.lastname if !item.person.nil?}"%></td>
     </tr>
   </table>
 </div>
