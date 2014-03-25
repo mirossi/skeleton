@@ -47,7 +47,7 @@ class WinesController < ApplicationController
   def create
     @wine = Wine.new(wine_params)
     @wine.user= current_user
-    parse_and_insert_grapes
+    parse_and_insert
     respond_to do |format|
       if @wine.save
         format.html { redirect_to action: 'index', notice: 'Wine was successfully created.' }
@@ -62,7 +62,7 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1
   # PATCH/PUT /wines/1.json
   def update
-    parse_and_insert_grapes
+    parse_and_insert
     respond_to do |format|
       if @wine.update(wine_params)
         format.html { redirect_to action: 'index', notice: 'Wine was successfully updated.' }
@@ -96,12 +96,24 @@ class WinesController < ApplicationController
     end
   
   def provide_params
-      @grape_names=Grape.all.map{|f| f.name}
+      @grape_names=Grape.all.map{|f| f.name}.sort_by{|word| word.downcase}
+      @food_names=Food.all.map{|f| f.name}.sort_by{|word| word.downcase}
   end
   
-  def parse_and_insert_grapes
-    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    puts  params[:grapes]
-    
+  def parse_and_insert
+    @wine.grapes.build
+    @wine.grapes=[]
+    if params[:grapes].length>=3
+    params[:grapes].split(',').each { |item|  @wine.grapes << Grape.find_or_create(item.strip)  }
+    end
+
+
+    @wine.foods.build
+    @wine.foods=[]
+    if params[:foods].length>=3
+      params[:foods].split(',').each { |item|  @wine.foods << Food.find_or_create(item.strip)  }
+    end
+
+
   end
 end

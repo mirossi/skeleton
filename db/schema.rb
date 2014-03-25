@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325161159) do
+ActiveRecord::Schema.define(version: 20140325223623) do
+
+  create_table "animals", force: true do |t|
+    t.string   "name"
+    t.integer  "maxAge"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -21,11 +28,16 @@ ActiveRecord::Schema.define(version: 20140325161159) do
   end
 
   create_table "contacts", force: true do |t|
-    t.string  "mobile",                 default: "", null: false
+    t.string  "mobile", default: "", null: false
     t.string  "street"
     t.integer "zip"
     t.string  "city"
-    t.integer "person_has_contacts_id"
+  end
+
+  create_table "foods", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "grapes", force: true do |t|
@@ -51,7 +63,6 @@ ActiveRecord::Schema.define(version: 20140325161159) do
   create_table "people", force: true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.integer  "contact_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -77,13 +88,20 @@ ActiveRecord::Schema.define(version: 20140325161159) do
     t.string   "country_code"
   end
 
+  create_table "trees", force: true do |t|
+    t.string   "name"
+    t.integer  "maxage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",       null: false
+    t.string   "encrypted_password",     default: "",       null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,        null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -91,6 +109,11 @@ ActiveRecord::Schema.define(version: 20140325161159) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.string   "role",                   default: "member"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -106,6 +129,13 @@ ActiveRecord::Schema.define(version: 20140325161159) do
   create_table "wine_has_images", force: true do |t|
     t.integer  "wine_id"
     t.integer  "image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "wine_likes_foods", force: true do |t|
+    t.integer  "wine_id"
+    t.integer  "food_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

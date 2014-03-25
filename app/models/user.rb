@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
   
   validates_uniqueness_of :username, :case_sensitive => false
   validates_presence_of  :username
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_one :person
   has_many :comments
   has_many :wines
-    has_many :shops
+  has_many :shops
   has_many :images
 
   

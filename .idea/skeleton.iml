@@ -224,10 +224,10 @@
     <orderEntry type="library" scope="PROVIDED" name="activerecord-deprecated_finders (v1.0.3, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v4.0.3, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v4.0.2, PIK: Ruby-200-p195) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="atomic (v1.1.15, PIK: Ruby-200-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="atomic (v1.1.16, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.7, PIK: Ruby-200-p195) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bcrypt-ruby (v3.1.5, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootstrap-sass (v3.1.1.0, PIK: Ruby-200-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bootstrap_tokenfield_rails (v0.0.6, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.1.4, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.5.3, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="climate_control (v0.0.3, PIK: Ruby-200-p195) [gem]" level="application" />
@@ -249,11 +249,12 @@
     <orderEntry type="library" scope="PROVIDED" name="jquery-datatables-rails (v1.12.2, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v3.1.0, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-turbolinks (v2.0.2, PIK: Ruby-200-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jquery-ui-rails (v4.2.0, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v1.8.1, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.5.4, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.25.1, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v4.7.5, PIK: Ruby-200-p195) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.9.0, PIK: Ruby-200-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.9.2, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.3.15, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="paperclip (v4.1.1, PIK: Ruby-200-p195) [gem]" level="application" />
@@ -268,16 +269,16 @@
     <orderEntry type="library" scope="PROVIDED" name="rails_serve_static_assets (v0.0.2, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails_stdout_logging (v0.0.3, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.0.3, PIK: Ruby-200-p195) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rake (v10.1.1, PIK: Ruby-200-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v10.2.0, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.1.1, PIK: Ruby-200-p195) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sass (v3.3.3, PIK: Ruby-200-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sass (v3.3.4, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v4.0.1, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sdoc (v0.4.0, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.11.0, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v2.0.1, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.9, PIK: Ruby-200-p195) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="thor (v0.18.1, PIK: Ruby-200-p195) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="thread_safe (v0.2.0, PIK: Ruby-200-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="thor (v0.19.1, PIK: Ruby-200-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="thread_safe (v0.3.1, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v1.4.1, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.15, PIK: Ruby-200-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v2.2.1, PIK: Ruby-200-p195) [gem]" level="application" />
