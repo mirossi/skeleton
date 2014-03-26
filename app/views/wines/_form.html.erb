@@ -44,7 +44,7 @@
     <div class="form-group">
       <label for="wine-year" class="col-sm-2 control-label">Jahrgang</label>
       <div class="col-sm-10">
-        <%= f.select :year,  (1970..Time.current.year).to_a  , :class => 'form-control', "placeholder"=> "weintyp"%>
+        <%= f.select :year,  (1970..Time.current.year).to_a.reverse  , :class => 'form-control', "placeholder"=> "weintyp"%>
         
       </div>
     </div>
@@ -52,10 +52,15 @@
 
     <div class="form-group">
       <label for="wine-country_code" class="col-sm-2 control-label">Land</label>
-      <div class="col-sm-10">
+      <div class="col-sm-10" id="country_code">
         <%= f.country_select :country_code,  ['CH', 'FR', 'ES', 'IT'], iso_codes: true ,:class => 'form-control', "placeholder"=> "land" %>
       </div>
     </div>
+
+<%= render partial: 'subregion_select', locals: {parent_region: f.object.country_code} %>
+
+
+
 
 
 

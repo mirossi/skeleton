@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325223623) do
+ActiveRecord::Schema.define(version: 20140326144130) do
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20140325223623) do
     t.string   "country_code"
     t.integer  "user_id"
     t.string   "wine_type"
+    t.string   "subregion_code"
   end
 
 end

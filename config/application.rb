@@ -20,6 +20,7 @@ module Skeleton
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.i18n.default_locale = :de
+    config.i18n.fallbacks = [:en]
     config.to_prepare do
       Devise::SessionsController.layout "devise"
       Devise::SessionsController.skip_before_filter :require_login

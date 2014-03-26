@@ -2,6 +2,12 @@ class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
   before_action :provide_params
 
+  
+  def subregion_options
+  render partial: 'subregion_select'
+  end
+  
+  
   # GET /wines
   # GET /wines.json
   def index
