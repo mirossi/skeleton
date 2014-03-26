@@ -76,5 +76,3 @@ gem 'country_select'
 
 gem 'jquery-ui-rails'
 gem 'bootstrap_tokenfield_rails'
-
-gem 'dropbox-api'
