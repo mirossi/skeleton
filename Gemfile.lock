@@ -170,7 +170,6 @@ DEPENDENCIES
   countries
   country_select
   devise
-  dropbox-sdk
   growlyflash
   jbuilder (~> 1.2)
   jquery-datatables-rails
