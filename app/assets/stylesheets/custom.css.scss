@@ -1,6 +1,8 @@
 @import "bootstrap";
 
-
+.form-control, select {
+   height: auto; 
+}
 
 #myContextMenu {
   position: fixed;
@@ -8,6 +10,8 @@
 }
 select{
   @extend .form-control;}
+
+
 
 
 
