@@ -19,7 +19,17 @@ class ShopsController < ApplicationController
 
   end
 
-  # GET /shops/new
+  def availableShops
+    shopsall= Shop.all.map{|f| [text: f.name, value: f.id]}
+    request.format = :json
+
+    respond_to do |format|
+      format.json  { render :json => shopsall } # don't do msg.to_json
+    end
+
+  end
+
+    # GET /shops/new
   def new
     @shop = Shop.new
   end

@@ -80,5 +80,8 @@ Skeleton::Application.routes.draw do
    
   get '/info/subregion_options' => 'wines#subregion_options'
 
+  get '/info/availableShops' => 'shops#availableShops'
+
+
   
 end

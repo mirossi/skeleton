@@ -1,111 +1,121 @@
+<%= form_for(@wine, html: {class: "form-horizontal", id: "MyForm"}) do |f| %>
+    <% if @wine.errors.any? %>
+        <div id="alert alert-danger">
+          <h4><%= pluralize(@wine.errors.count, "Fehler") %>, konnte nicht gespeichert werden:</h4>
 
-<%= form_for(@wine, html: {class: "form-horizontal", id: "MyForm"} ) do |f| %>
-  <% if @wine.errors.any? %>
-    <div id="alert alert-danger">
-      <h4><%= pluralize(@wine.errors.count, "Fehler") %>, konnte nicht gespeichert werden:</h4>
-
-      <ul>
-      <% @wine.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @wine.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
     <div class="form-group">
       <label for="wine-name" class="col-sm-2 control-label">Name</label>
+
       <div class="col-sm-10">
-        <%= f.text_field :name, :class => 'form-control', "placeholder"=> "name"%>
+        <%= f.text_field :name, :class => 'form-control', "placeholder" => "name" %>
       </div>
     </div>
 
-   <div class="form-group">
+    <div class="form-group">
       <label for="wine-name" class="col-sm-2 control-label">Weintyp</label>
+
       <div class="col-sm-10">
-        <%= f.select :wine_type,  %w[Rotwein Weisswein Schaumwein Dessertwein]  , :class => 'form-control', "placeholder"=> "weintyp"%>
+        <%= f.select :wine_type, %w[Rotwein Weisswein Schaumwein Dessertwein], :class => 'form-control', "placeholder" => "weintyp" %>
       </div>
     </div>
 
-   <div class="form-group">
+    <div class="form-group">
       <label for="wine-name" class="col-sm-2 control-label">Traubensorten</label>
+
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="grapes" name="grapes" placeholder= "traubensorten" value=" <%= @wine.grapes.map{|f| f.name }.join(', ')%>"/>
+        <input type="text" class="form-control" id="grapes" name="grapes" placeholder="traubensorten" value=" <%= @wine.grapes.map { |f| f.name }.join(', ') %>"/>
       </div>
     </div>
 
     <div class="form-group">
       <label for="wine-name" class="col-sm-2 control-label">Passt zu</label>
+
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="foods" name="foods" placeholder= "essen" value=" <%= @wine.foods.map{|f| f.name }.join(', ')%>"/>
+        <input type="text" class="form-control" id="foods" name="foods" placeholder="essen" value=" <%= @wine.foods.map { |f| f.name }.join(', ') %>"/>
       </div>
     </div>
 
 
     <div class="form-group">
       <label for="wine-year" class="col-sm-2 control-label">Jahrgang</label>
+
       <div class="col-sm-10">
-        <%= f.select :year,  (1970..Time.current.year).to_a.reverse  , :class => 'form-control', "placeholder"=> "weintyp"%>
-        
+        <%= f.select :year, (1970..Time.current.year).to_a.reverse, :class => 'form-control', "placeholder" => "weintyp" %>
+
       </div>
     </div>
 
 
     <div class="form-group">
       <label for="wine-country_code" class="col-sm-2 control-label">Land</label>
+
       <div class="col-sm-10" id="country_code">
-        <%= f.country_select :country_code,  ['CH', 'FR', 'ES', 'IT'], iso_codes: true ,:class => 'form-control', "placeholder"=> "land" %>
+        <%= f.country_select :country_code, ['CH', 'FR', 'ES', 'IT'], iso_codes: true, :class => 'form-control', "placeholder" => "land" %>
       </div>
     </div>
 
 
 
 
-<%= render partial: 'subregion_select', locals: {parent_region: f.object.country_code} %>
+    <%= render partial: 'subregion_select', locals: {parent_region: f.object.country_code} %>
 
 
-   <div class="form-group">
-      <label for="wine-name" class="col-sm-2 control-label"><%=  %>Erhältlich bei</label>
-           <div class="col-sm-10">
-     <%= f.fields_for :shop_sells_wines do |u| %>
-     
+    <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label"><%= %>Erhältlich bei</label>
 
-             <% if !u.object.price.nil? %>
-        <table width="100%">
+
+      <div class="col-sm-10">
+        <table width="100%" id="shoptable">
+          <%= f.fields_for :shop_sells_wines do |u| %>
+              <% if !u.object.price.nil? %>
+              <tr>
+                <td><%= u.select :shop_id, Shop.all.collect { |p| [p.name, p.id] }, :class => 'form-control shopselectors', "placeholder" => "shopname" %></td>
+                <td width="85px"><%= u.text_field :price, :class => 'form-control', "placeholder" => "preis", :value => (number_with_precision(u.object.price, :precision => 2, separator: '.')) %> </td>
+                <td width="10px">
+                  <button type="button" class="btn btn-danger deleteButton">-</button>
+                </td>
+              </tr>
+
+              <% end %>
+          <% end %>
+
           <tr>
-            <td><%= u.select :shop_id, Shop.all.collect{|p| [ p.name, p.id ] }  , :class => 'form-control', "placeholder"=> "shopname"%></td>
-            <td width="85px"><%=u.text_field  :price ,:class => 'form-control', "placeholder"=>"preis", :value => (number_with_precision(u.object.price, :precision => 2, separator: '.'))   %> </td>
-            <td width="10px"><button type="button" class="btn btn-danger">-</button> </td>
+            <td></td>
+            <td></td>
+            <td>
+              <button type="button" class="btn  btn-primary" width="10px" id="addshopbutton">+</button>
+            </td>
           </tr>
         </table>
-  <% end %>
-
-     <% end %>
-          <table width="100%">
-          <tr>
-            <td width="100%" ></td>
-            <td width="85px"> </td>
-            <td width="10px"><button type="button" class="btn  btn-primary" width="10px">+</button> </td>
-          </tr>
-        </table>
-                  
 
 
-         </div>
-   </div>
+      </div>
+    </div>
 
 
 
 
 
     <!--<div class="form-group">-->
-      <!--<label for="wine-country_code" class="col-sm-2 control-label">Etiquet</label>-->
-      <!--<div class="col-sm-10">-->
-        <!--<%= f.fields_for :images do |builder| %>-->
-            <!--<% if builder.object.picture_content_type.nil? %>-->
-                <!--<%= builder.file_field :picture %>-->
-            <!--<% end %>-->
-        <!--<% end %>-->
-      <!--</div>-->
+    <!--<label for="wine-country_code" class="col-sm-2 control-label">Etiquet</label>-->
+    <!--<div class="col-sm-10">-->
+    <!--<%= f.fields_for :images do |builder| %>-->
+        <!--
+        <% if builder.object.picture_content_type.nil? %>-->
+            <!--<%= builder.file_field :picture %>-->
+            <!--
+        <% end %>-->
+        <!--
+    <% end %>-->
+    <!--</div>-->
     <!--</div>-->
 
 
@@ -113,35 +123,102 @@
     <div class="form-group">
       <div class="text-right">
         <div class="col-sm-12">
-        <%= f.submit  "Ok", :class => 'btn btn-primary', :id => "MySubmitButton" %>
-          <%= local_assigns[:extrabuttons].html_safe%>
+          <%= f.submit "Ok", :class => 'btn btn-primary', :id => "MySubmitButton" %>
+          <%= local_assigns[:extrabuttons].html_safe %>
         </div>
       </div>
     </div>
 
-  </div>
+    </div>
 <% end %>
 
+
+
+
 <script>
-  
-$(document).ready(function () {
+
+ function getAvailableShops(){
+     $.getJSON('/info/availableShops', function(data) {
+         $.each(data, function (index, value) {
+             $(".shopselectors").append('<option value="'+value[0].value+'">'+value[0].text+'</option>');
+         });
+     });
+ }
 
 
-  $('#grapes').tokenfield({
-  autocomplete: {
-    source: <%= @grape_names.to_json.html_safe %>,
-    delay: 100
-  },
-  showAutocompleteOnFocus: true
-})
+ function reassignIds(){
 
-    $('#foods').tokenfield({
-        autocomplete: {
-            source: <%= @food_names.to_json.html_safe %>,
-            delay: 100
-        },
-        showAutocompleteOnFocus: true
-    })
-  });
+     $( "#shoptable tr" ).each(function( index ) {
+         $( this).html($( this).html().replace(/attributes_.*_shop/g, "attributes_"+index+"_shop" ));
+         $( this).html($( this).html().replace(/attributes\]\[.*\]\[shop/g, "attributes]["+index+"][shop" ));
+         $( this).html($( this).html().replace(/attributes_.*_price/g, "attributes_"+index+"_price" ));
+         $( this).html($( this).html().replace(/attributes\]\[.*\]\[price/g, "attributes]["+index+"][price" ));
+
+
+         $('.deleteButton').unbind("click");
+         $('.deleteButton').click(function () {
+             $(this).parents('tr').remove();
+             reassignIds();
+         });
+         $('#addshopbutton').unbind("click");
+         $('#addshopbutton').click(function () {
+             $('#shoptable tr:last').before($('#tabclone tr:first').clone());
+             reassignIds();
+         });
+     });
+
+ }
+
+
+
+ $(document).ready(function () {
+        getAvailableShops();
+
+
+
+
+     $('#addshopbutton').click(function () {
+            $('#shoptable tr:last').before($('#tabclone tr:first').clone());
+            reassignIds();
+        });
+        $('.deleteButton').click(function () {
+            $(this).parents('tr').remove();
+            reassignIds();
+        });
+
+
+        $('#grapes').tokenfield({
+            autocomplete: {
+                source: <%= @grape_names.to_json.html_safe %>,
+                delay: 100
+            },
+            showAutocompleteOnFocus: true
+        })
+
+        $('#foods').tokenfield({
+            autocomplete: {
+                source: <%= @food_names.to_json.html_safe %>,
+                delay: 100
+            },
+            showAutocompleteOnFocus: true
+        })
+    });
 
 </script>
+
+<div hidden="true">
+  <table width="100%" id="tabclone">
+    <tr>
+      <td>
+        <select id="wine_shop_sells_wines_attributes_0_shop_id" class="shopselectors" name="wine[shop_sells_wines_attributes][0][shop_id]"></select>
+      </td>
+      <td width="85px">
+        <input class="form-control" id="wine_shop_sells_wines_attributes_0_price" name="wine[shop_sells_wines_attributes][0][price]" placeholder="preis" type="text">
+      </td>
+      <td width="10px">
+        <button type="button" class="btn btn-danger deleteButton">-</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
