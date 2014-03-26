@@ -71,7 +71,7 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1.json
   def update
     parse_and_insert
-     @wine.shop_sells_wines=[]
+     @wine.shop_sells_wines.destroy_all
     respond_to do |format|
       if @wine.update(wine_params)
         format.html { redirect_to action: 'index', notice: 'Wine was successfully updated.' }

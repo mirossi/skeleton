@@ -1,5 +1,6 @@
 class Wine < ActiveRecord::Base
   validates :name, length: { minimum: 3 }
+  
 
   has_many :wine_likes_foods
   has_many :shop_sells_wines

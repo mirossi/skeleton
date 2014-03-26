@@ -74,14 +74,15 @@
 
       <div class="col-sm-10">
         <table width="100%" id="shoptable">
-          <%= f.fields_for :shop_sells_wines do |u| %>
+          <%= f.fields_for :shop_sells_wines, :include_id => false do |u| %>
               <% if !u.object.price.nil? %>
               <tr>
                 <td><%= u.select :shop_id, Shop.all.collect { |p| [p.name, p.id] }, :class => 'form-control shopselectors', "placeholder" => "shopname" %></td>
-                <td width="85px"><%= u.text_field :price, :class => 'form-control', "placeholder" => "preis", :value => (number_with_precision(u.object.price, :precision => 2, separator: '.')) %> </td>
+                <td width="85px"><%= u.text_field :price, :class => 'form-control', "placeholder" => "preis", :value => (number_with_precision(u.object.price, :precision => 2, separator: '.')) %>  </td>
                 <td width="10px">
                   <button type="button" class="btn btn-danger deleteButton">-</button>
                 </td>
+                
               </tr>
 
               <% end %>
@@ -149,19 +150,23 @@
  function reassignIds(){
 
      $( "#shoptable tr" ).each(function( index ) {
+       $( this).attr('value',$( this).val())
          $( this).html($( this).html().replace(/attributes_.*_shop/g, "attributes_"+index+"_shop" ));
          $( this).html($( this).html().replace(/attributes\]\[.*\]\[shop/g, "attributes]["+index+"][shop" ));
          $( this).html($( this).html().replace(/attributes_.*_price/g, "attributes_"+index+"_price" ));
          $( this).html($( this).html().replace(/attributes\]\[.*\]\[price/g, "attributes]["+index+"][price" ));
-
-
-         $('.deleteButton').unbind("click");
          $('.deleteButton').click(function () {
-             $(this).parents('tr').remove();
-             reassignIds();
+                  $( "#shoptable tr input" ).each(function( index ) {
+       $( this).attr('value',$( this).val())
+        });
+            $(this).parents('tr').remove();
+
+            reassignIds();
          });
-         $('#addshopbutton').unbind("click");
          $('#addshopbutton').click(function () {
+            $( "#shoptable tr input" ).each(function( index ) {
+       $( this).attr('value',$( this).val())
+        });
              $('#shoptable tr:last').before($('#tabclone tr:first').clone());
              reassignIds();
          });
@@ -178,10 +183,17 @@
 
 
      $('#addshopbutton').click(function () {
+        $( "#shoptable tr input" ).each(function( index ) {
+       $( this).attr('value',$( this).val())
+        });
             $('#shoptable tr:last').before($('#tabclone tr:first').clone());
+
             reassignIds();
         });
         $('.deleteButton').click(function () {
+                 $( "#shoptable tr input" ).each(function( index ) {
+       $( this).attr('value',$( this).val())
+        });
             $(this).parents('tr').remove();
             reassignIds();
         });
