@@ -3,13 +3,12 @@
           <% parent_region ||= params[:parent_region] %>
   <% country = Carmen::Country.coded(parent_region) %>
   <% if country.nil? %>
-    <em>Please select a country above</em>
   <% elsif country.subregions? %>
     <div class="form-group">
       <label for="wine-country_code" class="col-sm-2 control-label">Region</label>
       <div class="col-sm-10">
     
-    <%= subregion_select(:order, :state_code, parent_region, :class => 'form-control', "placeholder"=> "region" )%>
+    <%= subregion_select(:wine, :subregion_code, parent_region, :class => 'form-control', "placeholder"=> "region" )%>
           </div>
       </div>
 

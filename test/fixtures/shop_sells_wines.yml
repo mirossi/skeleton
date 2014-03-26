@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wine_id: 
+  shop_id: 
+  price: 
+  user_id: 1
+
+two:
+  wine_id: 
+  shop_id: 
+  price: 
+  user_id: 1

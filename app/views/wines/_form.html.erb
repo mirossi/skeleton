@@ -57,8 +57,34 @@
       </div>
     </div>
 
+
+
+
 <%= render partial: 'subregion_select', locals: {parent_region: f.object.country_code} %>
 
+
+   <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label"><%=  %>Erhältlich bei</label>
+           <div class="col-sm-10">
+     <%= f.fields_for :shop_sells_wines do |u| %>
+     
+
+             <% if !u.object.price.nil? %>
+        <table width="100%">
+          <tr>
+            <td><%= u.select :shop_id, Shop.all.collect{|p| [ p.name, p.id ] }  , :class => 'form-control', "placeholder"=> "shopname"%></td>
+            <td width="85px"><%=u.text_field  :price ,:class => 'form-control', "placeholder"=>"preis", :value => (number_with_precision(u.object.price, :precision => 2, separator: '.'))   %> </td>
+            <td width="10px"><button type="button" class="btn btn-danger">-</button> </td>
+          </tr>
+        </table>
+  <% end %>
+
+     <% end %>
+                  <button type="button" class="btn  btn-primary">+</button>
+
+
+         </div>
+   </div>
 
 
 

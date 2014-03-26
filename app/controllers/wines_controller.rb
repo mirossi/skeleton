@@ -30,11 +30,13 @@ class WinesController < ApplicationController
   def new
     @wine = Wine.new
     @wine.images.build
+    @wine.shop_sells_wines.build
   end
 
   # GET /wines/1/edit
   def edit
     @wine.images.build
+    @wine.shop_sells_wines.build
   end
   
   
@@ -69,6 +71,7 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1.json
   def update
     parse_and_insert
+     @wine.shop_sells_wines=[]
     respond_to do |format|
       if @wine.update(wine_params)
         format.html { redirect_to action: 'index', notice: 'Wine was successfully updated.' }
@@ -98,7 +101,7 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :year, :wine_type, :country_code, images_attributes:  [:picture])
+      params.require(:wine).permit(:name, :year, :wine_type, :country_code, :subregion_code,images_attributes:  [:picture], shop_sells_wines_attributes: [:shop_id ,:price])
     end
   
   def provide_params

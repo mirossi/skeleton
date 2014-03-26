@@ -11,7 +11,7 @@
   </tr>
   <tr>
     <td>Land:</td>
-    <td><%= item.country_code.nil? ? '   ' : Country[item.country_code] %> </td>
+    <td><%= item.country_code.nil? ? '   ' :  Carmen::Country.coded(item.country_code).name %> </td>
   </tr>
   <tr>
     <td>Telefon:</td>
