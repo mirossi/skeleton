@@ -21,7 +21,7 @@
           isEditable="<%= @itemEdit %>"
           isDeletable="<%= @itemDel %>">
 
-            <a href="<%= url_for :controller => @controller_name, :action => 'edit', :id => item.id if @itemEdit %>" class="list-group-item">
+            <a href="<%= url_for :controller => @controller_name, :action => 'show', :id => item.id if @itemEdit %>" class="list-group-item">
               <%= render @item_partial, item: item %>
 
             </a>

@@ -58,7 +58,7 @@ class WinesController < ApplicationController
     parse_and_insert
     respond_to do |format|
       if @wine.save
-        format.html { redirect_to action: 'index', notice: 'Wine was successfully created.' }
+        format.html { redirect_to action: 'show', notice: 'Wine was successfully created.' }
         format.json { render action: 'index', status: :created, location: @wine }
       else
         format.html { render action: 'new' }
@@ -74,7 +74,7 @@ class WinesController < ApplicationController
      @wine.shop_sells_wines.destroy_all
     respond_to do |format|
       if @wine.update(wine_params)
-        format.html { redirect_to action: 'index', notice: 'Wine was successfully updated.' }
+        format.html { redirect_to action: 'show', notice: 'Wine was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -200,7 +200,6 @@ function loadingState(start) {
 }
 
 function deleteItem(theURL) {
-    $
     loadingState(true);
     $.ajax({
         url: theURL,
@@ -216,11 +215,21 @@ function deleteItem(theURL) {
                 success: function (data) {
                     $('#myModal').modal('hide');
                     $('#theList').html($(data).find('#theList').html());
-                    $(".listitem a").removeAttr('href');
-                    $(".listitem").unbind("click");
-                    $(".listitem").on("click", function () {
-                        openModular($(this).attr("resItem") + "/edit");
-                    });
+
+                    if ($isModal == 1) {
+                        $("#new_item").unbind("click");
+                        $("#new_item").on("click", function () {
+                            openModular($("#new_item").attr("resItem"));
+                        });
+                        $(".listitem a").removeAttr('href');
+                        $(".listitem").unbind("click");
+                        $(".listitem[isEditable='true']").on("click", function () {
+                            openModular($(this).attr("resItem") + "/edit");
+                        });
+                    } else {
+                        $("#new_item").attr("href", $("#new_item").attr("resItem"));
+                    }
+
                     $("img.lazy").lazy();
 
                 },

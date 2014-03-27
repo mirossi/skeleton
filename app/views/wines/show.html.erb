@@ -1,29 +1,8 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title"><strong>Wein </strong></h1></div>
+  <div class="panel-body">
+    <%= render 'form' ,:static_show => true, :extrabuttons => "#{link_to 'Editieren',  edit_wine_path(@wine)  , :class => 'btn btn-default', :id => "MyBackButton"} #{link_to 'Zurück', wines_path , :class => 'btn btn-primary', :id => "MyBackButton"}" %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @wine.name %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @wine.year %>
-</p>
-
-<p>
-  <strong>Land:</strong>
-  <%= Country[@wine.country_code].translations['de']  %>
-</p>
-
-<p>
-  <strong>Pictures:</strong>
-  <% @wine.images.each do |img|  %>
-      <img src=" <%= img.picture.url(:thumb) if img.picture.exists?  %>" width="60" height="60"  alt="No Pic">
-  <% end%>
-  <% if @wine.images.empty?  %>
-      <img src="" width="60" height="60"  alt="No Pic">
-  <% end%>
-</p>
-
-<%= link_to 'Edit', edit_wine_path(@wine) %> |
-<%= link_to 'Back', wines_path %>
