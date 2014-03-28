@@ -11,7 +11,7 @@ function getAvailableShops(){
 
 }
 
-function wineform_addShop(){
+    function wineform_addShop(){
     wineform_mapValue();
     var newElement=$('#tabclone').clone();
     $(newElement).removeAttr('id');
@@ -36,7 +36,10 @@ function wineform_initEvents(){
 
     $('#addshopbutton').unbind('click');
     $('#addshopbutton').click(function () {wineform_addShop();});
+    $('.deleteButton').unbind('click');
     $('.deleteButton').click(function () {wineform_removeShop(this) });
+    $('#addnewshopbutton').unbind('click');
+    $("#addnewshopbutton").click(function () {addNewShop("/shops/new");});
 
 
 }
@@ -75,6 +78,7 @@ function createShopResponse(responseText, statusText, xhr, $form){
     block(false);
     if ($(responseText).find('#theList').length != 0) {
         getAvailableShops();
+
 
 
 
