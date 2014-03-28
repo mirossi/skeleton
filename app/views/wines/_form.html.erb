@@ -1,10 +1,10 @@
 <%= javascript_include_tag "wines_form.js" %>
-<% static_show=false if !defined?(static_show)%>
+<% static_show=false if !defined?(static_show) %>
 
 
 <%= form_for(@wine, html: {class: "form-horizontal", id: "MyForm"}) do |f| %>
     <% if @wine.errors.any? %>
-        <div id="alert alert-danger">
+        <div class="alert alert-danger">
           <h4><%= pluralize(@wine.errors.count, "Fehler") %>, konnte nicht gespeichert werden:</h4>
 
           <ul>
@@ -21,10 +21,10 @@
       <label for="wine-name" class="col-sm-2 control-label">Name</label>
 
       <div class="col-sm-10">
-        <% if static_show%>
-        <p class="form-control-static"> <%= @wine.name %> </p>
-        <% else%>
-        <%= f.text_field :name, :class => "form-control", "placeholder" => "name" %>
+        <% if static_show %>
+            <p class="form-control-static"> <%= @wine.name %> </p>
+        <% else %>
+            <%= f.text_field :name, :class => "form-control", "placeholder" => "name" %>
         <% end %>
       </div>
     </div>
@@ -33,10 +33,10 @@
       <label for="wine-name" class="col-sm-2 control-label">Weintyp</label>
 
       <div class="col-sm-10">
-        <% if static_show%>
+        <% if static_show %>
             <p class="form-control-static"> <%= @wine.wine_type %> </p>
-        <% else%>
-        <%= f.select :wine_type, %w[Rotwein Weisswein Schaumwein Dessertwein], :class => "form-control", "placeholder" => "weintyp" %>
+        <% else %>
+            <%= f.select :wine_type, %w[Rotwein Weisswein Schaumwein Dessertwein], :class => "form-control", "placeholder" => "weintyp" %>
         <% end %>
       </div>
     </div>
@@ -45,23 +45,24 @@
       <label for="wine-name" class="col-sm-2 control-label">Traubensorten</label>
 
       <div class="col-sm-10">
-        <% if static_show%>
-            <p class="form-control-static"> <%=@wine.grapes.map { |f| f.name }.join(', ') %> </p>
-        <% else%>
-        <input type="text" class="form-control" id="grapes" name="grapes" placeholder="traubensorten" value=" <%= @wine.grapes.map { |f| f.name }.join(', ') %>"/>
+        <% if static_show %>
+            <p class="form-control-static"> <%= @wine.grapes.map { |f| f.name }.join(', ') %> </p>
+        <% else %>
+            <input type="text" class="form-control" id="grapes" name="grapes" placeholder="traubensorten" value=" <%= @wine.grapes.map { |f| f.name }.join(', ') %>"/>
         <% end %>
       </div>
     </div>
 
     <div class="form-group">
       <label for="wine-name" class="col-sm-2 control-label">Passt zu</label>
-      <div class="col-sm-10">
-      <% if static_show%>
-          <p class="form-control-static"> <%= @wine.foods.map { |f| f.name }.join(', ')%> </p>
-      <% else%>
 
-        <input type="text" class="form-control" id="foods" name="foods" placeholder="essen" value=" <%= @wine.foods.map { |f| f.name }.join(', ') %>"/>
-      <% end %>
+      <div class="col-sm-10">
+        <% if static_show %>
+            <p class="form-control-static"> <%= @wine.foods.map { |f| f.name }.join(', ') %> </p>
+        <% else %>
+
+            <input type="text" class="form-control" id="foods" name="foods" placeholder="essen" value=" <%= @wine.foods.map { |f| f.name }.join(', ') %>"/>
+        <% end %>
       </div>
     </div>
 
@@ -70,10 +71,10 @@
       <label for="wine-year" class="col-sm-2 control-label">Jahrgang</label>
 
       <div class="col-sm-10">
-        <% if static_show%>
+        <% if static_show %>
             <p class="form-control-static"> <%= @wine.year %> </p>
-        <% else%>
-        <%= f.select :year, (1970..Time.current.year).to_a.reverse, :class => "form-control", "placeholder" => "weintyp" %>
+        <% else %>
+            <%= f.select :year, (1970..Time.current.year).to_a.reverse, :class => "form-control", "placeholder" => "weintyp" %>
         <% end %>
       </div>
     </div>
@@ -81,12 +82,13 @@
 
     <div class="form-group">
       <label for="wine-country_code" class="col-sm-2 control-label">Land</label>
+
       <div class="col-sm-10" id="country_code">
-      <% if static_show%>
-          <p class="form-control-static"><%=  @wine.country_code.nil? ? '   ' :  Carmen::Country.coded( @wine.country_code).name %> </p>
-      <% else%>
+        <% if static_show %>
+            <p class="form-control-static"><%= @wine.country_code.nil? ? '   ' : Carmen::Country.coded(@wine.country_code).name %> </p>
+        <% else %>
             <%= f.country_select :country_code, ['CH', 'FR', 'ES', 'IT'], iso_codes: true, :class => 'form-control', "placeholder" => "land" %>
-      <% end %>
+        <% end %>
       </div>
     </div>
 
@@ -100,111 +102,103 @@
       <label for="wine-name" class="col-sm-2 control-label"><%= %>Erhältlich bei</label>
 
 
-      <div class="col-sm-10">
-        <table width=" <%= "100%" if !static_show%>" id="shoptable">
-          <%= f.fields_for :shop_sells_wines, :include_id => false do |u| %>
-              <% if !u.object.price.nil? %>
-              <% if static_show%>
-                      <tr> <td><%=  "#{u.object.shop.name}:"%> </td><td><%=  "#{number_with_precision(u.object.price, :precision => 2, separator: '.')}CHF"%></td></tr>
-              <% else%>
-              <tr>
-                 
-                <td><%= u.hidden_field(:id)%> <%= u.select :shop_id, Shop.all.collect { |p| [p.name, p.id] }, :class => 'form-control shopselectors', "placeholder" => "shopname" %></td>
-                <td width="85px"><%= u.text_field :price, :class => 'form-control', "placeholder" => "preis", :value => (number_with_precision(u.object.price, :precision => 2, separator: '.')) %>  </td>
-                <td width="10px">
-                  <button type="button" class="btn btn-danger deleteButton">-</button>
-                </td>
-              </tr>
-              <% end %>
-              <% end %>
-          <% end %>
-          <% if !static_show%>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>
-              <button type="button" class="btn  btn-primary" width="10px" id="addshopbutton">+</button>
-            </td>
-          </tr>
-          <% end %>
-        </table>
+      <div class="col-sm-10" id="shoptable">
+        <%= f.fields_for :shop_sells_wines, :include_id => false do |u| %>
+
+                <% if static_show %>
+                <% if !u.object.price.nil? and  !u.object.shop.nil? %>
+                    <p><%= "#{u.object.shop.name}:" %>
+                    <%= "#{number_with_precision(u.object.price, :precision => 2, separator: '.')}CHF" %>
+                <% end %>
+                <% else %>
+                    <div class="row">
+                      <div class="col-xs-8  col-sm-8 col-md-8">
+                        <%= u.hidden_field(:id) %> <%= u.select :shop_id, Shop.all.collect { |p| [p.name, p.id] }, :class => 'form-control shopselectors', "placeholder" => "shopname" %>
+                      </div>
+                      <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="input-group">
+                          <%= u.text_field :price, :class => 'form-control', "placeholder" => "preis", :value => (number_with_precision(u.object.price, :precision => 2, separator: '.')) %>
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default deleteButton">
+                            <span class="glyphicon glyphicon-minus"></span></button>
+                           </span>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
+
+        <% end %>
+        <% if !static_show %>
+            <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-12 text-right">
+                <button type="button" class="btn btn-default " id="addshopbutton">
+                  <span class="glyphicon glyphicon-plus"></span></button>
+              </div>
+            </div>
+        <% end %>
       </div>
-    </div>
+
+     </div>
 
 
 
 
+            <div class="form-group">
+              <div class="text-right">
+                <div class="col-sm-12">
+                  <% if !static_show %>  <%= f.submit "Ok", :class => 'btn btn-primary', :id => "MySubmitButton" %>
+                  <% end %>
+                  <%= local_assigns[:extrabuttons].html_safe %>
+                </div>
+              </div>
+            </div>
 
-    <div class="form-group">
-      <div class="text-right">
-        <div class="col-sm-12">
-          <% if !static_show%>  <%= f.submit "Ok", :class => 'btn btn-primary', :id => "MySubmitButton" %><% end %>
-          <%= local_assigns[:extrabuttons].html_safe %>
+        <% end %>
+
+
+
+        <div hidden="true">
+
+          <div class="row"  id="tabclone">
+            <div class="col-xs-8  col-sm-8 col-md-8">
+              <input  name="wine[shop_sells_wines_attributes][0][id]" type="hidden"> <select  class="shopselectors" name="wine[shop_sells_wines_attributes][0][shop_id]"></select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+              <div class="input-group">
+                <input class="form-control"  name="wine[shop_sells_wines_attributes][0][price]" placeholder="preis" type="text" >
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default deleteButton">
+                              <span class="glyphicon glyphicon-minus"></span></button>
+                           </span>
+              </div>
+            </div>
+          </div>
+
+
         </div>
-      </div>
-    </div>
 
-<% end %>
+        <script>
 
-
-
-<div hidden="true">
-  <table width="100%" id="tabclone">
-    <tr>
-      <td>
-        <select  class="shopselectors" name="wine[shop_sells_wines_attributes][][shop_id]"></select>
-      </td>
-      <td width="85px">
-        <input class="form-control"  name="wine[shop_sells_wines_attributes][][price]" placeholder="preis" type="text">
-      </td>
-      <td width="10px">
-        <button type="button" class="btn btn-danger deleteButton">-</button>
-      </td>
-    </tr>
-  </table>
-  
-</div>
-
-<script>
-  
-$(document).ready(function () {
-    getAvailableShops();
+            $(document).ready(function () {
+                getAvailableShops();
+                wineform_initEvents();
 
 
+                $('#grapes').tokenfield({
+                    autocomplete: {
+                        source: <%= @grape_names.to_json.html_safe %>,
+                        delay: 100
+                    },
+                    showAutocompleteOnFocus: true
+                })
 
-    $('#addshopbutton').unbind('click');
-    $('#addshopbutton').click(function () {
-        $( "#shoptable tr input" ).each(function( index ) {
-            $( this).attr('value',$( this).val())
-        });
-        $('#shoptable tr:last').before($('#tabclone tr:first').clone());
-
-        reassignIds();
-    });
-    $('.deleteButton').click(function () {
-        $( "#shoptable tr input" ).each(function( index ) {
-            $( this).attr('value',$( this).val())
-        });
-        $(this).parents('tr').remove();
-        reassignIds();
-    });
-
-
-    $('#grapes').tokenfield({
-        autocomplete: {
-            source: <%= @grape_names.to_json.html_safe %>,
-            delay: 100
-            },
-            showAutocompleteOnFocus: true
-            })
-
-            $('#foods').tokenfield({
-            autocomplete: {
-                source: <%= @food_names.to_json.html_safe %>,
-                delay: 100
-            },
-            showAutocompleteOnFocus: true
-        })
-    });
-</script>
+                $('#foods').tokenfield({
+                    autocomplete: {
+                        source: <%= @food_names.to_json.html_safe %>,
+                        delay: 100
+                    },
+                    showAutocompleteOnFocus: true
+                })
+            });
+        </script>
 

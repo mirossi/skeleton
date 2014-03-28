@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326173328) do
+ActiveRecord::Schema.define(version: 20140326221437) do
 
   create_table "animals", force: true do |t|
     t.string   "name"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20140326173328) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "price",      precision: 10, scale: 0
+    t.decimal  "price",      precision: 10, scale: 2
   end
 
   create_table "shops", force: true do |t|

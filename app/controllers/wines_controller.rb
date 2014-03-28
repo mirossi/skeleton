@@ -36,7 +36,6 @@ class WinesController < ApplicationController
   # GET /wines/1/edit
   def edit
     @wine.images.build
-    @wine.shop_sells_wines.build
   end
   
   
@@ -71,11 +70,16 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1.json
   def update
     parse_and_insert
-    old_items=@wine.shop_sells_wines.dup
-     @wine.shop_sells_wines=[]
+
+    #destroy elements which were not any more in the params
+    old_items=@wine.shop_sells_wines.map {|i| i.id if !i.id.nil?}
+    new_items=[]
+    wine_params[:shop_sells_wines_attributes].each {|key, value| new_items.push(value[:id].to_i)} if !wine_params[:shop_sells_wines_attributes].nil?
+    ShopSellsWine.find(old_items-new_items).each {|i| i.destroy}
+
+
     respond_to do |format|
       if @wine.update(wine_params)
-        #(old_items-@wine.shop_sells_wines).destroy_all
         format.html { redirect_to action: 'show', notice: 'Wine was successfully updated.' }
         format.json { head :no_content }
         
@@ -123,7 +127,7 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :year, :wine_type, :country_code, :subregion_code,images_attributes:  [:picture], shop_sells_wines_attributes: [:shop_id ,:price])
+      params.require(:wine).permit(:name, :year, :wine_type, :country_code, :subregion_code,images_attributes:  [:picture], shop_sells_wines_attributes: [:id, :shop_id ,:price])
     end
   
   def provide_params

@@ -1,5 +1,6 @@
 
 function getAvailableShops(){
+    $(".shopselectors").html("");
     $.getJSON('/info/availableShops', function(data) {
         $.each(data, function (index, value) {
             $(".shopselectors").append('<option value="'+value[0].value+'">'+value[0].text+'</option>');
@@ -10,33 +11,45 @@ function getAvailableShops(){
 
 }
 
+function wineform_addShop(){
+    wineform_mapValue();
+    var newElement=$('#tabclone').clone();
+    $(newElement).removeAttr('id');
+    $('.deleteButton',newElement).click(function () {wineform_removeShop(this) });
+    $('#shoptable .row:last').before(newElement);
+     reassignIds();
+}
+
+function wineform_removeShop(element){
+    wineform_mapValue();
+    $(element).parents('.row').remove();
+    reassignIds();
+}
+
+function wineform_mapValue(){
+    $( "#shoptable .row input" ).each(function( index ) {
+        $( this).attr('value',$( this).val())
+    });
+}
+
+function wineform_initEvents(){
+
+    $('#addshopbutton').unbind('click');
+    $('#addshopbutton').click(function () {wineform_addShop();});
+    $('.deleteButton').click(function () {wineform_removeShop(this) });
+
+
+}
+
 
 
 function reassignIds(){
-
-    $( "#shoptable tr" ).each(function( index ) {
-        $( this).attr('value',$( this).val())
-// $( this).html($( this).html().replace(/attributes_.*_shop/g, "attributes_"+index+"_shop" ));
-//        $( this).html($( this).html().replace(/attributes\]\[.*\]\[shop/g, "attributes]["+index+"][shop" ));
-//       $( this).html($( this).html().replace(/attributes_.*_price/g, "attributes_"+index+"_price" ));
-//        $( this).html($( this).html().replace(/attributes\]\[.*\]\[price/g, "attributes]["+index+"][price" ));
-        $('.deleteButton').click(function () {
-            $( "#shoptable tr input" ).each(function( index ) {
-                $( this).attr('value',$( this).val())
-            });
-            $(this).parents('tr').remove();
-
-            reassignIds();
-        });
-        $('#addshopbutton').click(function () {
-            $( "#shoptable tr input" ).each(function( index ) {
-                $( this).attr('value',$( this).val())
-            });
-            $('#shoptable tr:last').before($('#tabclone tr:first').clone());
-            reassignIds();
-        });
+    $( '#shoptable .row' ).each(function( index ) {
+        $( this).html($( this).html().replace(/attributes\]\[[0-9]*\]\[shop/g, "attributes]["+index+"][shop" ));
+        $( this).html($( this).html().replace(/attributes\]\[[0-9]*\]\[price/g, "attributes]["+index+"][price" ));
+        $( this).html($( this).html().replace(/attributes\]\[[0-9]*\]\[id/g, "attributes]["+index+"][id" ));
     });
-
+    wineform_initEvents();
 }
 
 
