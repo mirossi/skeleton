@@ -1,8 +1,51 @@
+<%= javascript_include_tag "bootstrap.file-input.js" %>
+
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h1 class="panel-title"><strong>Wein </strong></h1></div>
+    <h1 class="panel-title"><strong>Wein </strong></h1>
+  </div>
   <div class="panel-body">
-    <%= render 'form' ,:static_show => true, :extrabuttons => "#{link_to 'Editieren',  edit_wine_path(@wine)  , :class => 'btn btn-default', :id => "MyBackButton"} #{link_to 'Zurück', wines_path , :class => 'btn btn-primary', :id => "MyBackButton"}" %>
+    <%= render 'form' ,:static_show => true, :extrabuttons => "#{link_to 'Editieren',  edit_wine_path(@wine)  , :class => 'btn btn-default', :id => "MyBackButton"} #{link_to 'Zurück', wines_path , :class => 'btn btn-default', :id => "MyBackButton"}" %>
+  </div>
+
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <table><tr>    
+      <td width="50px"><%= form_for(:image, :url => { :controller => "wines", :action => :addImage }, :html => { :method => :post, id:"myImageForm" }) do |f| %>
+    <%= hidden_field_tag :wine_id , @wine.id   %>
+    <%= f.file_field :picture , class: "btn btn-default btn-lg" , id: "imageuploadbutton"  %>
+      <% end %>  </td> 
+    <td><h1 class="panel-title"><strong>Bilder </strong></h1> </td>
+       </tr></table>
+  </div>
+  <div class="panel-body">
+    <div id="imageset">
+     <% @wine.images.each do |b| %>
+      <a dataId="<%= b.id %>" ><img    class="img-responsive img-thumbnail lazy" style="height: 100px" data-src="<%= url_for :controller => 'images', :action => 'redir', :id => b.id%>" src="<%= asset_path("loading.gif")  %>"  alt="NotFound" /></a>
+     <% end %>
+    </div>
   </div>
 </div>
+  
+  
+    <div class="modal fade" id="myPicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-body" id="my-modal-body">
+
+      <img  id="modalpic" class="img-responsive img-thumbnail lazy" style="width: 100%" data-src="" srcLoad="<%= asset_path("loading.gif")  %>"  alt="NotFound" />
+       <button id="deletebutton" type="button" class="btn btn-danger deleteButton">-</button>
+    </div>
+  </div>
+</div>
+  
+<div hidden="true"> 
+  <a id="imgclone"><img  class="img-responsive img-thumbnail lazy" style="height: 100px"   alt="NotFound" style="display: inline-block;"></a>
+ 
+</div>
+
+  
+
 

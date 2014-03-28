@@ -105,10 +105,11 @@
           <%= f.fields_for :shop_sells_wines, :include_id => false do |u| %>
               <% if !u.object.price.nil? %>
               <% if static_show%>
-                      <tr> <td><%=  "#{u.object.shop.name}:"%> </td><td><%=  "#{u.object.price}CHF"%></td></tr>
+                      <tr> <td><%=  "#{u.object.shop.name}:"%> </td><td><%=  "#{number_with_precision(u.object.price, :precision => 2, separator: '.')}CHF"%></td></tr>
               <% else%>
               <tr>
-                <td><%= u.select :shop_id, Shop.all.collect { |p| [p.name, p.id] }, :class => 'form-control shopselectors', "placeholder" => "shopname" %></td>
+                 
+                <td><%= u.hidden_field(:id)%> <%= u.select :shop_id, Shop.all.collect { |p| [p.name, p.id] }, :class => 'form-control shopselectors', "placeholder" => "shopname" %></td>
                 <td width="85px"><%= u.text_field :price, :class => 'form-control', "placeholder" => "preis", :value => (number_with_precision(u.object.price, :precision => 2, separator: '.')) %>  </td>
                 <td width="10px">
                   <button type="button" class="btn btn-danger deleteButton">-</button>
@@ -134,22 +135,6 @@
 
 
 
-    <!--<div class="form-group">-->
-    <!--<label for="wine-country_code" class="col-sm-2 control-label">Etiquet</label>-->
-    <!--<div class="col-sm-10">-->
-    <!--<%= f.fields_for :images do |builder| %>-->
-        <!--
-        <% if builder.object.picture_content_type.nil? %>-->
-            <!--<%= builder.file_field :picture %>-->
-            <!--
-        <% end %>-->
-        <!--
-    <% end %>-->
-    <!--</div>-->
-    <!--</div>-->
-
-
-
     <div class="form-group">
       <div class="text-right">
         <div class="col-sm-12">
@@ -159,7 +144,6 @@
       </div>
     </div>
 
-    </div>
 <% end %>
 
 
@@ -168,15 +152,59 @@
   <table width="100%" id="tabclone">
     <tr>
       <td>
-        <select id="wine_shop_sells_wines_attributes_0_shop_id" class="shopselectors" name="wine[shop_sells_wines_attributes][0][shop_id]"></select>
+        <select  class="shopselectors" name="wine[shop_sells_wines_attributes][][shop_id]"></select>
       </td>
       <td width="85px">
-        <input class="form-control" id="wine_shop_sells_wines_attributes_0_price" name="wine[shop_sells_wines_attributes][0][price]" placeholder="preis" type="text">
+        <input class="form-control"  name="wine[shop_sells_wines_attributes][][price]" placeholder="preis" type="text">
       </td>
       <td width="10px">
         <button type="button" class="btn btn-danger deleteButton">-</button>
       </td>
     </tr>
   </table>
+  
 </div>
+
+<script>
+  
+$(document).ready(function () {
+    getAvailableShops();
+
+
+
+    $('#addshopbutton').unbind('click');
+    $('#addshopbutton').click(function () {
+        $( "#shoptable tr input" ).each(function( index ) {
+            $( this).attr('value',$( this).val())
+        });
+        $('#shoptable tr:last').before($('#tabclone tr:first').clone());
+
+        reassignIds();
+    });
+    $('.deleteButton').click(function () {
+        $( "#shoptable tr input" ).each(function( index ) {
+            $( this).attr('value',$( this).val())
+        });
+        $(this).parents('tr').remove();
+        reassignIds();
+    });
+
+
+    $('#grapes').tokenfield({
+        autocomplete: {
+            source: <%= @grape_names.to_json.html_safe %>,
+            delay: 100
+            },
+            showAutocompleteOnFocus: true
+            })
+
+            $('#foods').tokenfield({
+            autocomplete: {
+                source: <%= @food_names.to_json.html_safe %>,
+                delay: 100
+            },
+            showAutocompleteOnFocus: true
+        })
+    });
+</script>
 

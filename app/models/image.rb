@@ -14,7 +14,7 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => ["image/jpg", "image/jpeg", "image/png"]
   belongs_to :user
 
-  has_one :wine_has_image
+  has_one :wine_has_image, :dependent => :destroy
   has_one :wine, through: :wine_has_image
   accepts_nested_attributes_for :wine
 

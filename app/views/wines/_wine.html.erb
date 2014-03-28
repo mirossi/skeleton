@@ -1,14 +1,51 @@
 <h4 class="list-group-item-heading"><%= item.name %></h4>
 <div class="list-group-item-text" style="padding-left: 20px; padding-top: 5px;">
   <table>
+    <% if ! item.wine_type.nil? %>
     <tr>
-      <td style="width:70px">Jahr:</td>
-      <td><%= item.year.nil? ? ' ' : item.year %></td>
+      <td style="width:150px">Weintyp:</td> <td><%= item.wine_type %></td>
     </tr>
+    <% end%>
+  
+    <% if !item.grapes.nil? and !item.grapes.empty? %>
     <tr>
-      <td>Land:</td>
-      <td><%= item.country_code.nil? ? '   ' :  Carmen::Country.coded(item.country_code).name%> </td>
+      <td style>Trauben:</td> <td><%= item.grapes.map { |f| f.name }.join(', ')  %></td>
     </tr>
+    <% end%>
+  
+
+
+    <% if !item.year.nil? %>
+    <tr>
+      <td style>Jahr:</td> <td><%= item.year %></td>
+    </tr>
+    <% end%>
+  
+    <% if !item.country_code.nil? %>
+    <tr>
+      <td style>Land:</td> <td><%= Carmen::Country.coded(item.country_code).name %></td>
+    </tr>
+     <% end%>
+  
+    <% if !item.country_code.nil?%>
+    <tr>
+      <td style>Region:</td> <td><%= Carmen::Country.coded(item.country_code).subregions.coded(item.subregion_code).name  %></td>
+    </tr>
+     <% end%>
+    
+   <% if !item.foods.nil? and !item.foods.empty? %>
+    <tr>
+      <td style>Passt zu:</td> <td><%= item.foods.map { |f| f.name }.join(', ')  %></td>
+    </tr>
+    <% end%> 
+    
+    <% if !item.shop_sells_wines.empty?  %>
+    <tr>
+      <td style>Preis:</td> <td><%= number_with_precision(item.shop_sells_wines.sort! { |a,b| a.price <=> b.price }[0].price , :precision => 2, separator: '.')+ "CHF"  %></td>
+    </tr>
+    <% end%> 
+
+
   </table>
 </div>
 

@@ -71,11 +71,14 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1.json
   def update
     parse_and_insert
-     @wine.shop_sells_wines.destroy_all
+    old_items=@wine.shop_sells_wines.dup
+     @wine.shop_sells_wines=[]
     respond_to do |format|
       if @wine.update(wine_params)
+        #(old_items-@wine.shop_sells_wines).destroy_all
         format.html { redirect_to action: 'show', notice: 'Wine was successfully updated.' }
         format.json { head :no_content }
+        
       else
         format.html { render action: 'edit' }
         format.json { render json: @wine.errors, status: :unprocessable_entity }
@@ -91,6 +94,25 @@ class WinesController < ApplicationController
       format.html { redirect_to wines_url }
       format.json { head :no_content }
     end
+  end
+  
+  def addImage
+    request.format = :json
+    newid=0
+    wine= Wine.find(params[:wine_id])
+    if !wine.nil?
+
+      img=Image.new
+      img.picture=params[:image][:picture]
+      wine.images.push(img)
+      if wine.save()
+        newid=img.id
+      end
+    end
+
+    respond_to do |format|
+    format.json  { render :json => newid }
+    end      
   end
 
   private
