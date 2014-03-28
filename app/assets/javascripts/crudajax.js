@@ -279,5 +279,3 @@ function formSubmitResponse(responseText, statusText, xhr, $form) {
 }
 
 
-
-

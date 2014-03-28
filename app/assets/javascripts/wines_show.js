@@ -1,5 +1,22 @@
 var $picurl;
 
+$(document).ready(function () {
+    $(":file").filestyle({input: false,classButton: "btn btn-primary", buttonText: "+"});
+
+    $("#imageuploadbutton").unbind('change');
+    $("#imageuploadbutton").change(function(){
+        $picurl=this;
+        block(true);
+        $('#myImageForm').ajaxSubmit({
+            success: imageAdded,
+            error:  imagefailed
+        });
+    });
+
+    $("#imageset a").click(imgmodalOpen);
+
+
+});
 
 
 function imgmodalOpen() {
@@ -32,42 +49,6 @@ function imgmodalOpen() {
 }
 
 
-$(document).ready(function () {
-$(":file").filestyle({input: false,classButton: "btn btn-primary", buttonText: "+"});
-
-      $("#imageuploadbutton").unbind('change');
-    $("#imageuploadbutton").change(function(){
-      $picurl=this;
-       block(true);
-      $('#myImageForm').ajaxSubmit({
-        success: imageAdded,
-        error:  imagefailed
-      });
-  }); 
-  
-$("#imageset a").click(imgmodalOpen);
-
-
-});
-
-
-function block(doblock){
-
-    if(doblock){
-          $.blockUI({message: "Bitte warten...", 
-                  css: {          border: 'none',
-                                  padding: '15px',
-                                  backgroundColor: '#000',
-                                  '-webkit-border-radius': '10px',
-                                  '-moz-border-radius': '10px',
-                                  opacity: .5,
-                                  color: '#fff'
-                              } });
-    }
-    else{
-      $.unblockUI();
-    }
-}
 
 function imageAdded(responseText, statusText, xhr, $form){
 
@@ -95,4 +76,24 @@ block(false);
 function imagefailed(responseText, statusText, xhr, $form){
 alert("Failed to send picture to server");
 block(false);
+}
+
+
+
+function block(doblock){
+
+    if(doblock){
+        $.blockUI({message: "Bitte warten...",
+            css: {          border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            } });
+    }
+    else{
+        $.unblockUI();
+    }
 }

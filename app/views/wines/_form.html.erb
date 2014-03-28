@@ -113,7 +113,7 @@
                 <% else %>
                     <div class="row">
                       <div class="col-xs-8  col-sm-8 col-md-8">
-                        <%= u.hidden_field(:id) %> <%= u.select :shop_id, Shop.all.collect { |p| [p.name, p.id] }, :class => 'form-control shopselectors', "placeholder" => "shopname" %>
+                        <%= u.hidden_field(:id) %> <%= u.hidden_field(:user_id)  %> <%= u.select :shop_id, Shop.all.collect { |p| [p.name, p.id] },{}, {:class => 'form-control shopselectors', "placeholder" => "shopname"}  %>
                       </div>
                       <div class="col-xs-4 col-sm-4 col-md-4">
                         <div class="input-group">
@@ -131,6 +131,8 @@
         <% if !static_show %>
             <div class="row">
               <div class="col-xs-4 col-sm-4 col-md-12 text-right">
+                <button type="button" class="btn btn-default " id="addnewshopbutton">
+                  neuer shop</button>
                 <button type="button" class="btn btn-default " id="addshopbutton">
                   <span class="glyphicon glyphicon-plus"></span></button>
               </div>
@@ -161,7 +163,7 @@
 
           <div class="row"  id="tabclone">
             <div class="col-xs-8  col-sm-8 col-md-8">
-              <input  name="wine[shop_sells_wines_attributes][0][id]" type="hidden"> <select  class="shopselectors" name="wine[shop_sells_wines_attributes][0][shop_id]"></select>
+              <input  name="wine[shop_sells_wines_attributes][0][id]" type="hidden"> <input  name="wine[shop_sells_wines_attributes][0][user_id]" type="hidden" value="<%= current_user.id %>">  <select  class="shopselectors" name="wine[shop_sells_wines_attributes][0][shop_id]"></select>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4">
               <div class="input-group">
@@ -200,5 +202,17 @@
                     showAutocompleteOnFocus: true
                 })
             });
+
+            $("#addnewshopbutton").click(function () {addNewShop("<%= new_shop_path %>");});
+
         </script>
 
+
+
+<div class="modal fade" id="myNewShop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-body" id="myNewShopBody">
+
+    </div>
+  </div>
+</div>

@@ -42,6 +42,24 @@ function wineform_initEvents(){
 }
 
 
+function block(doblock){
+
+    if(doblock){
+        $.blockUI({message: "Bitte warten...",
+            css: {          border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            } });
+    }
+    else{
+        $.unblockUI();
+    }
+}
+
 
 function reassignIds(){
     $( '#shoptable .row' ).each(function( index ) {
@@ -52,6 +70,67 @@ function reassignIds(){
     wineform_initEvents();
 }
 
+
+function createShopResponse(responseText, statusText, xhr, $form){
+    block(false);
+    if ($(responseText).find('#theList').length != 0) {
+        getAvailableShops();
+
+
+
+    } else {
+        $('#myNewShop').modal('show');
+    }
+    $('#myNewShopBody').html($(responseText).filter('#theMainDiv').html());
+    $('#myNewShopBody #MyBackButton').removeAttr('href');
+    $("#myNewShopBody #MyBackButton").on("click", function () {
+        $('#myNewShop').modal('hide')
+    });
+    // $('#MySubmitButton').replaceWith('<a class="btn btn-primary"  id="MySubmitButton" rel="nofollow">Ok</a>');
+    $("#myNewShopBody #MySubmitButton").on("click", function () {
+                $('#myNewShop').ajaxForm({
+                    success: createShopResponse  // post-submit callback
+                });
+            }
+    );
+
+
+}
+
+function addNewShop(theURL){
+    $.ajax({
+        url: theURL,
+        type: "GET",
+        dataType: "html",
+        success: function (data) {
+            $('#myNewShopBody').html($(data).filter('#theMainDiv').html());
+            $('#myNewShopBody #MyBackButton').removeAttr('href');
+            $("#myNewShopBody #MyBackButton").on("click", function () {
+                $('#myNewShop').modal('hide')
+            });
+            $('#myNewShopBody #MySubmitButton').removeAttr('href');
+            $('#myNewShopBody #MyForm').ajaxForm({
+                success: createShopResponse  // post-submit callback
+            });
+            $("#myNewShopBody #MySubmitButton").on("click", function () {
+                        $('#myNewShop').modal('hide');
+                        block(true);
+
+                    }
+            );
+            $('#myNewShop').modal('show');
+
+        },
+        error: function (xhr, status) {
+            alert("Sorry, there was a problem!");
+        },
+        complete: function (xhr, status) {
+        }
+    })
+
+
+
+}
 
 
 
