@@ -3,7 +3,7 @@
 <table>
    
 
-   <% if ! item..street.nil? %>
+   <% if item.street.length!=0%>
   <tr>
     <td style="width:70px">Adresse:</td>
     <td><%= item.street.nil? ? ' ' : item.street %></td>
