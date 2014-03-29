@@ -41,6 +41,32 @@
   </div>
   <div class="panel-body">
 
+    <% if current_user.role=='admin' %>
+    <%= form_for( @wine) do |f| %>
+     
+    <%= f.fields_for :ratings  do |ff| %>
+    
+     <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-2">
+        <%= hidden_field_tag :id , ff.object.id   %>
+        <%=  ff.object.user.person.firstname  %>
+      </div>
+      <div class="col-xs-8 col-sm-9 col-md-8">
+      <div class="input-group" style="width:100%">
+      <%= ff.select :rating, [-1,1,2,3,4],:class => 'form-control', "placeholder"=> "rating" %>
+        <%= ff.text_area :comment, rows:1 ,:class => 'form-control', "placeholder"=> "kommentar" %>
+                          <span class="input-group-btn">
+
+                           </span>
+</div>
+      </div>
+
+      </div> 
+    <% end %>
+<%= f.submit "ok", :class => 'btn btn-default' %>
+      <% end %>
+
+ <% else %>
     <%= form_for( @myRating, :url => { :controller => "wines", :action => :addMyRating }, :html => { :method => :post, id:"myRatingForm" }) do |f| %>
     <div class="row">
       <div class="col-xs-4 col-sm-3 col-md-2">
@@ -64,7 +90,7 @@
 
       <% if  @wine.ratings.length>0 %>
       <% @wine.ratings.each do |b| %>
-          <% if ! (b.user_id == current_user.id) %>
+          <% if (! b.user_id == current_user.id) and b.rating!=-1 %>
                   <div class="row">
                     <div class="col-xs-3 col-sm-3 col-md-2">
                       <%= b.user.person.firstname %>:
@@ -86,6 +112,8 @@
           <% end %>
       <% end %>
       <% end %>
+  
+<% end %>
   </div>
 </div>
 

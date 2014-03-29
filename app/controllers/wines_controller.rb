@@ -26,6 +26,20 @@ class WinesController < ApplicationController
   def show
     @myRating= Rating.find_by_wine_id_and_user_id(@wine.id,current_user.id);
     @myRating= Rating.new(user_id: current_user.id) if @myRating.nil?
+    
+    User.all.each do |i|
+      if(! @wine.ratings.any?{|r| r.user_id==i.id})
+      curr= Rating.find_by_wine_id_and_user_id(params[:wine_id],current_user.id);
+      if(curr.nil?)
+        curr= Rating.new()
+        curr[:wine_id]= params[@wine.id]
+        curr[:user_id]= i.id
+      end
+     
+      @wine.ratings.push(curr)
+      end
+    end
+    
   end
 
   # GET /wines/new
@@ -55,7 +69,10 @@ class WinesController < ApplicationController
   def create
     @wine = Wine.new(wine_params)
     @wine.user= current_user
+    
+
     parse_and_insert
+
     respond_to do |format|
       if @wine.save
         format.html { redirect_to wine_path(@wine), notice: 'Wine was successfully created.' }
@@ -70,7 +87,9 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1
   # PATCH/PUT /wines/1.json
   def update
+        if( !params[:grapes].nil?)
     parse_and_insert
+        end
 
     #destroy elements which were not any more in the params
     old_items=@wine.shop_sells_wines.map {|i| i.id if !i.id.nil?}
@@ -141,9 +160,9 @@ class WinesController < ApplicationController
     def set_wine
       @wine = Wine.find(params[:id])
       
-      @theRating=0
+      @theRating=0.0
       @theTotPerson=0
-      @wine.ratings.each {|i| if(i!=-1); @theRating+=i.rating; @theTotPerson+=1; end;}
+      @wine.ratings.each {|i| if(i.rating!=-1 and !i.rating.nil? ); @theRating+=i.rating; @theTotPerson+=1; end;}
       @theRating/=@theTotPerson if @theTotPerson!=0
         
   
@@ -151,7 +170,7 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :year, :wine_type, :country_code, :comment, :subregion_code,images_attributes:  [:picture], shop_sells_wines_attributes: [:id, :shop_id ,:price, :user_id])
+params.require(:wine).permit(:name, :year, :wine_type, :country_code, :comment, :subregion_code,images_attributes:  [:picture], shop_sells_wines_attributes: [:id, :shop_id ,:price, :user_id], ratings_attributes: [:id, :user_id, :rating, :comment])
     end
 
   def rating_params
