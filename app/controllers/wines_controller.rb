@@ -24,6 +24,8 @@ class WinesController < ApplicationController
   # GET /wines/1
   # GET /wines/1.json
   def show
+    @myRating= Rating.find_by_wine_id_and_user_id(@wine.id,current_user.id);
+    @myRating= Rating.new(user_id: current_user.id) if @myRating.nil?
   end
 
   # GET /wines/new
@@ -119,16 +121,43 @@ class WinesController < ApplicationController
     end      
   end
 
+  def addMyRating
+    rating= Rating.find_by_wine_id_and_user_id(params[:wine_id],current_user.id);
+    if(rating.nil?)
+      rating= Rating.new(rating_params)
+      rating[:wine_id]= params[:wine_id]
+      rating[:user_id]= current_user.id
+     rating.save
+    else
+      rating.update(rating_params)
+     end
+    respond_to do |format|
+        format.html { redirect_to action: 'show', notice: 'Rating was added' }
+        format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wine
       @wine = Wine.find(params[:id])
+      if(@wine.ratings.length>0)
+        ratarray= (@wine.ratings.map {|i| i.rating})
+        @theRating = 0
+        ratarray.each { |a| @theRating+=a }
+      else
+        @theRating="noch keiner bewertung"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :year, :wine_type, :country_code, :subregion_code,images_attributes:  [:picture], shop_sells_wines_attributes: [:id, :shop_id ,:price, :user_id])
+      params.require(:wine).permit(:name, :year, :wine_type, :country_code, :comment, :subregion_code,images_attributes:  [:picture], shop_sells_wines_attributes: [:id, :shop_id ,:price, :user_id])
     end
+
+  def rating_params
+    params.require(:rating).permit(:user_id, :rating, :comment)
+  end
   
   def provide_params
       @grape_names=Grape.all.map{|f| f.name}.sort_by{|word| word.downcase}

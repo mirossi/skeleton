@@ -16,8 +16,26 @@ $(document).ready(function () {
     $("#imageset a").click(imgmodalOpen);
 
 
+    $("#addRatingButton").append('<span class="glyphicon glyphicon-plus"></span>');
+
+
+
 });
 
+//function addTheRating(){
+//    $('#myRatingForm').ajaxSubmit({
+//        success: ratingAdded,
+//        error:  ratingfailed
+//    });
+//}
+//
+//function ratingAdded(){
+//    alert("Danke fürs rating!")
+//}
+//
+//function ratingfailed(){
+//    alert("Fehler beim rating upload!")
+//}
 
 function imgmodalOpen() {
   $('#deletebutton').attr('indexImg', $('#imageset a').index(this));

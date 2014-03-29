@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326221437) do
+ActiveRecord::Schema.define(version: 20140329103807) do
 
   create_table "animals", force: true do |t|
     t.string   "name"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 20140326221437) do
     t.datetime "updated_at"
     t.integer  "person_id"
     t.integer  "contact_id"
+  end
+
+  create_table "ratings", force: true do |t|
+    t.decimal  "rating",     precision: 10, scale: 0
+    t.integer  "user_id"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "wine_id"
   end
 
   create_table "shop_sells_wines", force: true do |t|
@@ -158,6 +167,7 @@ ActiveRecord::Schema.define(version: 20140326221437) do
     t.integer  "user_id"
     t.string   "wine_type"
     t.string   "subregion_code"
+    t.string   "comment"
   end
 
 end

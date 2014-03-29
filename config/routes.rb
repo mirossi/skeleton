@@ -85,6 +85,6 @@ Skeleton::Application.routes.draw do
   
   post '/wines/addImage/:id' => 'wines#addImage'
 
-
+  post '/wines/addMyRating/:id' => 'wines#addMyRating'
   
 end

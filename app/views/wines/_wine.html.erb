@@ -37,13 +37,20 @@
     <tr>
       <td style>Passt zu:</td> <td><%= item.foods.map { |f| f.name }.join(', ')  %></td>
     </tr>
-    <% end%> 
-    
+    <% end%>
+
+
+    <% if !item.user.nil?  %>
+        <tr>
+          <td style>Erstellt von:</td> <td><%= item.user.person.firstname %></td>
+        </tr>
+    <% end%>
+
     <% if !item.shop_sells_wines.empty?  %>
     <tr>
       <td style>Preis:</td> <td><%= number_with_precision(item.shop_sells_wines.sort! { |a,b| a.price <=> b.price }[0].price , :precision => 2, separator: '.')+ "CHF"  %></td>
     </tr>
-    <% end%> 
+    <% end%>
 
 
   </table>
