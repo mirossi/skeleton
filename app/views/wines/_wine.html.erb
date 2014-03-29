@@ -39,6 +39,9 @@
     </tr>
     <% end%>
 
+            <tr>
+              <td style>Bewertung:</td> <td><%= theRating=0;theTotPerson=0;item.ratings.each {|i| if(i!=-1); theRating+=i.rating; theTotPerson+=1; end;};theTotPerson==0 ? "noch keine Bewertung" : theRating/=theTotPerson  %> <%= theTotPerson>0 ? "(#{theTotPerson} bewertungen)" : nil  %></td>
+        </tr>
 
     <% if !item.user.nil?  %>
         <tr>

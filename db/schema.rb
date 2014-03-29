@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329103807) do
-
-  create_table "animals", force: true do |t|
-    t.string   "name"
-    t.integer  "maxAge"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140329162743) do
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -28,10 +21,11 @@ ActiveRecord::Schema.define(version: 20140329103807) do
   end
 
   create_table "contacts", force: true do |t|
-    t.string  "mobile", default: "", null: false
+    t.string  "mobile",                 default: "", null: false
     t.string  "street"
     t.integer "zip"
     t.string  "city"
+    t.integer "person_has_contacts_id"
   end
 
   create_table "foods", force: true do |t|
@@ -63,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140329103807) do
   create_table "people", force: true do |t|
     t.string   "firstname"
     t.string   "lastname"
+    t.integer  "contact_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -104,13 +99,7 @@ ActiveRecord::Schema.define(version: 20140329103807) do
     t.string   "comment"
     t.integer  "user_id"
     t.string   "country_code"
-  end
-
-  create_table "trees", force: true do |t|
-    t.string   "name"
-    t.integer  "maxage"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "homepage"
   end
 
   create_table "users", force: true do |t|

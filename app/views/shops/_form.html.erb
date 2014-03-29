@@ -49,12 +49,18 @@
       </div>
    </div>
 
+   <div class="form-group">
+      <label for="wine-name" class="col-sm-2 control-label">Land</label>
+      <div class="col-sm-10">
+         <%= f.country_select :country_code,  ['CH'], iso_codes: true ,:class => 'form-control', "placeholder"=> "land" %>
+      </div>
+   </div>
 
 
    <div class="form-group">
-      <label for="wine-name" class="col-sm-2 control-label"><%=  %>Kommentar</label>
+      <label for="wine-name" class="col-sm-2 control-label"><%=  %>Webseite</label>
       <div class="col-sm-10">
-        <%= f.text_area :comment, rows:4 ,:class => 'form-control', "placeholder"=> "kommentar" %>
+        <%= f.text_field :homepage,:class => 'form-control', "placeholder"=> "webseite" %>
       </div>
    </div>
 

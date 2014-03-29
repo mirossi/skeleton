@@ -1,9 +1,28 @@
-<h4 class="list-group-item-heading"><%= item.username %></h4>
+<h4 class="list-group-item-heading"><%= "#{item.person.firstname if !item.person.nil?}  #{item.person.lastname if !item.person.nil?}" %></h4>
 <div class="list-group-item-text" style="padding-left: 20px; padding-top: 5px;">
   <table>
     <tr>
-      <td style="width:70px">Name:</td>
-      <td><%= "#{item.person.firstname if !item.person.nil?}  #{item.person.lastname if !item.person.nil?}"%></td>
+      <td style="width:70px">Username:</td>
+      <td><%= item.username %></td>
     </tr>
+    
+        <tr>
+      <td style="width:70px">Email:</td>
+      <td><%= item.email %></td>
+    </tr>
+    
+    <% if !item.person.contacts.nil? and item.person.contacts.length!=0 %>
+     <tr>
+      <td style="width:70px">Adresse:</td>
+       <td><%= "#{item.person.contacts[0].street} , #{item.person.contacts[0].zip} #{item.person.contacts[0].city}"%></td>
+    </tr>
+    
+     <tr>
+      <td style="width:70px">Phone:</td>
+       <td><%= "#{item.person.contacts[0].mobile}"%></td>
+    </tr>
+    
+    <% end %>    
+    
   </table>
 </div>

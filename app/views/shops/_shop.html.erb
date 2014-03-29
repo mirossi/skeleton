@@ -1,6 +1,9 @@
 <h4 class="list-group-item-heading"><%= item.name %></h4>
 <div class="list-group-item-text" style="padding-left: 20px; padding-top: 5px;">
 <table>
+   
+
+   <% if ! item..street.nil? %>
   <tr>
     <td style="width:70px">Adresse:</td>
     <td><%= item.street.nil? ? ' ' : item.street %></td>
@@ -14,11 +17,26 @@
     <td><%= item.country_code.nil? ? '   ' :  Carmen::Country.coded(item.country_code).name %> </td>
   </tr>
   <tr>
+        <% end%>
+    
+       <% if ! item.phone.nil? %>
     <td>Telefon:</td>
     <td><%= item.phone.nil? ? '   ' : item.phone  %> </td>
   </tr>
+  <% end%>
+  
+     <% if ! item.homepage.nil? %>
+  <td>Webseite:</td>
+  <td><%= item.homepage.nil? ? '   ' :  item.homepage%> </td>
+    </tr>
+  <% end%>
+  
+  
+   <% if ! item.comment.nil? %>
   <td>Kommentar:</td>
   <td><%= item.comment.nil? ? '   ' :  item.comment%> </td>
-  </tr>
+    </tr>
+  <% end%>
+
 </table>
 </div>

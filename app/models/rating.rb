@@ -1,9 +1,10 @@
 class Rating < ActiveRecord::Base
-  validates :user_id, :presence => true
+  validates :user, :presence => true
   validates :rating, :presence => false
 
 
   belongs_to :wine
+  belongs_to :user
 
 
 end

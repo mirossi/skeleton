@@ -141,13 +141,13 @@ class WinesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_wine
       @wine = Wine.find(params[:id])
-      if(@wine.ratings.length>0)
-        ratarray= (@wine.ratings.map {|i| i.rating})
-        @theRating = 0
-        ratarray.each { |a| @theRating+=a }
-      else
-        @theRating="noch keiner bewertung"
-      end
+      
+      @theRating=0
+      @theTotPerson=0
+      @wine.ratings.each {|i| if(i!=-1); @theRating+=i.rating; @theTotPerson+=1; end;}
+      @theRating/=@theTotPerson if @theTotPerson!=0
+        
+  
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
