@@ -24,7 +24,7 @@
   </div>
   <div class="panel-body">
     <div id="imageset">
-      <%= @wine.images.length==0 ? "Leider noch keine Bilder. Lade eins rauf!"  : nil %>
+      <%= @wine.images.empty? ? "Leider noch keine Bilder. Lade eins rauf!"  : nil %>
 
       
      <% @wine.images.each do |b| %>
