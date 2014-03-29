@@ -32,7 +32,6 @@ class WinesController < ApplicationController
   def new
     @wine = Wine.new
     @wine.images.build
-    @wine.shop_sells_wines.build
   end
 
   # GET /wines/1/edit
@@ -59,7 +58,7 @@ class WinesController < ApplicationController
     parse_and_insert
     respond_to do |format|
       if @wine.save
-        format.html { redirect_to action: 'show', notice: 'Wine was successfully created.' }
+        format.html { redirect_to wine_path(@wine), notice: 'Wine was successfully created.' }
         format.json { render action: 'index', status: :created, location: @wine }
       else
         format.html { render action: 'new' }

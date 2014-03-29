@@ -27,7 +27,7 @@
     </tr>
      <% end%>
   
-    <% if !item.country_code.nil?%>
+    <% if !item.subregion_code.nil?%>
     <tr>
       <td style>Region:</td> <td><%= Carmen::Country.coded(item.country_code).subregions.coded(item.subregion_code).name  %></td>
     </tr>
