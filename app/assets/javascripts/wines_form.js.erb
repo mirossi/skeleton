@@ -1,11 +1,22 @@
 
 function getAvailableShops(){
-    $(".shopselectors").html("");
+    $(".shopselectors").each(function() {
+        $(this).attr('selectedOpt',$(this).find(":selected").attr('value'));
+            $(this).find('option').remove(); 
+    });
+
     $.getJSON('/info/availableShops', function(data) {
         $.each(data, function (index, value) {
             $(".shopselectors").append('<option value="'+value[0].value+'">'+value[0].text+'</option>');
         });
+    $(".shopselectors").each(function() {
+          var $t=$(this).attr('selectedOpt');
+         $(this).find('option').filter(function () { return $(this).attr('value') == $t }).attr('selected','selected')
+
     });
+    });
+
+
   
 
 
